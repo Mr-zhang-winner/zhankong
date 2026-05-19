@@ -54,6 +54,10 @@ spring:
                 - Path=/xkd/**
               filters:
                 - StripPrefix=1
+            - id: ruoyi-xkd-ws
+              uri: lb:ws://ruoyi-xkd
+              predicates:
+                - Path=/ws-stomp/**
 security:
   captcha:
     enabled: true
@@ -64,3 +68,4 @@ security:
       - /auth/login
       - /auth/register
       - /code
+      - /ws-stomp/**

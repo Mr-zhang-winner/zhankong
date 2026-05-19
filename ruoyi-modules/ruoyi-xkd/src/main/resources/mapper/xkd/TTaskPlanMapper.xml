@@ -145,4 +145,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
               </if>
           )
     </select>
+
+    <select id="selectWaitingTasks" resultMap="TTaskPlanResult">
+        select *
+        from t_task_plan
+        where execute_status = 'WAITING'
+        and conflict_status = '0'
+        and start_time &lt;= #{nowTime}
+        and end_time &gt; #{nowTime}
+        order by start_time asc
+    </select>
+
+    <select id="selectRunningTasks" resultMap="TTaskPlanResult">
+        select *
+        from t_task_plan
+        where execute_status = 'RUNNING'
+        and end_time &lt;= #{nowTime}
+        order by end_time asc
+    </select>
 </mapper>
