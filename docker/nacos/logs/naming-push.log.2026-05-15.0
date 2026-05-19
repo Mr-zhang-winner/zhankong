@@ -1,0 +1,6 @@
+2026-05-15 10:03:33,863 INFO [PUSH-SUCC] 189ms, all delay time 772ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gen', ephemeral=true, revision=1}, DataSize=1
+
+2026-05-15 10:03:54,501 INFO [PUSH-SUCC] 11ms, all delay time 535ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, DataSize=1
+
+2026-05-15 10:52:59,710 INFO [PUSH-SUCC] 526ms, all delay time 1216ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, DataSize=1
+

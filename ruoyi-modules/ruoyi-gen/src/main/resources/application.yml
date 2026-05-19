@@ -1,0 +1,27 @@
+server:
+  port: 9202
+
+spring:
+  application:
+    name: ruoyi-gen
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:2881/ry-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ruoyi@ruoyi
+    password: Ruoyi@123456
+
+mybatis:
+  type-aliases-package: com.ruoyi.gen.domain
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+gen:
+  author: ruoyi
+  packageName: com.ruoyi.system
+  autoRemovePre: false
+  tablePrefix: sys_
+  allowOverwrite: false

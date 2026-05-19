@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TStationConfigMapper">
+    
+    <resultMap type="TStationConfig" id="TStationConfigResult">
+        <result property="stationId"    column="station_id"    />
+        <result property="stationName"    column="station_name"    />
+        <result property="longitude"    column="longitude"    />
+        <result property="latitude"    column="latitude"    />
+        <result property="address"    column="address"    />
+        <result property="contact"    column="contact"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectTStationConfigVo">
+        select station_id, station_name, longitude, latitude, address, contact, status, create_by, create_time, update_by, update_time, remark from t_station_config
+    </sql>
+
+    <select id="selectTStationConfigList" parameterType="TStationConfig" resultMap="TStationConfigResult">
+        <include refid="selectTStationConfigVo"/>
+        <where>  
+            <if test="stationName != null  and stationName != ''"> and station_name like concat('%', #{stationName}, '%')</if>
+            <if test="longitude != null "> and longitude = #{longitude}</if>
+            <if test="latitude != null "> and latitude = #{latitude}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="contact != null  and contact != ''"> and contact = #{contact}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectTStationConfigByStationId" parameterType="Long" resultMap="TStationConfigResult">
+        <include refid="selectTStationConfigVo"/>
+        where station_id = #{stationId}
+    </select>
+
+    <insert id="insertTStationConfig" parameterType="TStationConfig" useGeneratedKeys="true" keyProperty="stationId">
+        insert into t_station_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stationName != null and stationName != ''">station_name,</if>
+            <if test="longitude != null">longitude,</if>
+            <if test="latitude != null">latitude,</if>
+            <if test="address != null">address,</if>
+            <if test="contact != null">contact,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stationName != null and stationName != ''">#{stationName},</if>
+            <if test="longitude != null">#{longitude},</if>
+            <if test="latitude != null">#{latitude},</if>
+            <if test="address != null">#{address},</if>
+            <if test="contact != null">#{contact},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTStationConfig" parameterType="TStationConfig">
+        update t_station_config
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="stationName != null and stationName != ''">station_name = #{stationName},</if>
+            <if test="longitude != null">longitude = #{longitude},</if>
+            <if test="latitude != null">latitude = #{latitude},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="contact != null">contact = #{contact},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where station_id = #{stationId}
+    </update>
+
+    <delete id="deleteTStationConfigByStationId" parameterType="Long">
+        delete from t_station_config where station_id = #{stationId}
+    </delete>
+
+    <delete id="deleteTStationConfigByStationIds" parameterType="String">
+        delete from t_station_config where station_id in 
+        <foreach item="stationId" collection="array" open="(" separator="," close=")">
+            #{stationId}
+        </foreach>
+    </delete>
+</mapper>

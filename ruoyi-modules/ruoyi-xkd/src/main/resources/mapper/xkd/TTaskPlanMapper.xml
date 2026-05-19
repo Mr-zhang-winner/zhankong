@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TTaskPlanMapper">
+    
+    <resultMap type="TTaskPlan" id="TTaskPlanResult">
+        <result property="taskId"    column="task_id"    />
+        <result property="taskName"    column="task_name"    />
+        <result property="taskType"    column="task_type"    />
+        <result property="period"    column="period"    />
+        <result property="startTime"    column="start_time"    />
+        <result property="endTime"    column="end_time"    />
+        <result property="satelliteId"    column="satellite_id"    />
+        <result property="stationId"    column="station_id"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="paramConfig"    column="param_config"    />
+        <result property="executeStatus"    column="execute_status"    />
+        <result property="conflictStatus"    column="conflict_status"    />
+        <result property="conflictReason"    column="conflict_reason"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectTTaskPlanVo">
+        select task_id, task_name, task_type, period, start_time, end_time, satellite_id, station_id, device_id, param_config, execute_status, conflict_status, conflict_reason, create_by, create_time, update_by, update_time, remark from t_task_plan
+    </sql>
+
+    <select id="selectTTaskPlanList" parameterType="TTaskPlan" resultMap="TTaskPlanResult">
+        <include refid="selectTTaskPlanVo"/>
+        <where>  
+            <if test="taskName != null  and taskName != ''"> and task_name like concat('%', #{taskName}, '%')</if>
+            <if test="taskType != null  and taskType != ''"> and task_type = #{taskType}</if>
+            <if test="period != null  and period != ''"> and period = #{period}</if>
+            <if test="startTime != null "> and start_time = #{startTime}</if>
+            <if test="endTime != null "> and end_time = #{endTime}</if>
+            <if test="satelliteId != null "> and satellite_id = #{satelliteId}</if>
+            <if test="stationId != null "> and station_id = #{stationId}</if>
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="paramConfig != null  and paramConfig != ''"> and param_config = #{paramConfig}</if>
+            <if test="executeStatus != null  and executeStatus != ''"> and execute_status = #{executeStatus}</if>
+            <if test="conflictStatus != null  and conflictStatus != ''"> and conflict_status = #{conflictStatus}</if>
+            <if test="conflictReason != null  and conflictReason != ''"> and conflict_reason = #{conflictReason}</if>
+        </where>
+    </select>
+    
+    <select id="selectTTaskPlanByTaskId" parameterType="Long" resultMap="TTaskPlanResult">
+        <include refid="selectTTaskPlanVo"/>
+        where task_id = #{taskId}
+    </select>
+
+    <insert id="insertTTaskPlan" parameterType="TTaskPlan" useGeneratedKeys="true" keyProperty="taskId">
+        insert into t_task_plan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="taskName != null and taskName != ''">task_name,</if>
+            <if test="taskType != null and taskType != ''">task_type,</if>
+            <if test="period != null">period,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="endTime != null">end_time,</if>
+            <if test="satelliteId != null">satellite_id,</if>
+            <if test="stationId != null">station_id,</if>
+            <if test="deviceId != null">device_id,</if>
+            <if test="paramConfig != null">param_config,</if>
+            <if test="executeStatus != null">execute_status,</if>
+            <if test="conflictStatus != null">conflict_status,</if>
+            <if test="conflictReason != null">conflict_reason,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="taskName != null and taskName != ''">#{taskName},</if>
+            <if test="taskType != null and taskType != ''">#{taskType},</if>
+            <if test="period != null">#{period},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+            <if test="satelliteId != null">#{satelliteId},</if>
+            <if test="stationId != null">#{stationId},</if>
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="paramConfig != null">#{paramConfig},</if>
+            <if test="executeStatus != null">#{executeStatus},</if>
+            <if test="conflictStatus != null">#{conflictStatus},</if>
+            <if test="conflictReason != null">#{conflictReason},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTTaskPlan" parameterType="TTaskPlan">
+        update t_task_plan
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="taskName != null and taskName != ''">task_name = #{taskName},</if>
+            <if test="taskType != null and taskType != ''">task_type = #{taskType},</if>
+            <if test="period != null">period = #{period},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="satelliteId != null">satellite_id = #{satelliteId},</if>
+            <if test="stationId != null">station_id = #{stationId},</if>
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="paramConfig != null">param_config = #{paramConfig},</if>
+            <if test="executeStatus != null">execute_status = #{executeStatus},</if>
+            <if test="conflictStatus != null">conflict_status = #{conflictStatus},</if>
+            <if test="conflictReason != null">conflict_reason = #{conflictReason},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where task_id = #{taskId}
+    </update>
+
+    <delete id="deleteTTaskPlanByTaskId" parameterType="Long">
+        delete from t_task_plan where task_id = #{taskId}
+    </delete>
+
+    <delete id="deleteTTaskPlanByTaskIds" parameterType="String">
+        delete from t_task_plan where task_id in 
+        <foreach item="taskId" collection="array" open="(" separator="," close=")">
+            #{taskId}
+        </foreach>
+    </delete>
+
+    <select id="selectConflictTaskList" parameterType="TTaskPlan" resultMap="TTaskPlanResult">
+        select *
+        from t_task_plan
+        where execute_status in ('WAITING', 'RUNNING')
+          and start_time &lt; #{endTime}
+          and end_time &gt; #{startTime}
+          <if test="taskId != null">
+              and task_id != #{taskId}
+          </if>
+          and (
+              station_id = #{stationId}
+              <if test="deviceId != null">
+                  or device_id = #{deviceId}
+              </if>
+          )
+    </select>
+</mapper>

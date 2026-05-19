@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TDeviceConfigMapper">
+    
+    <resultMap type="TDeviceConfig" id="TDeviceConfigResult">
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceCode"    column="device_code"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="deviceType"    column="device_type"    />
+        <result property="stationId"    column="station_id"    />
+        <result property="ipAddress"    column="ip_address"    />
+        <result property="udpPort"    column="udp_port"    />
+        <result property="configParams"    column="config_params"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectTDeviceConfigVo">
+        select device_id, device_code, device_name, device_type, station_id, ip_address, udp_port, config_params, status, create_by, create_time, update_by, update_time, remark from t_device_config
+    </sql>
+
+    <select id="selectTDeviceConfigList" parameterType="TDeviceConfig" resultMap="TDeviceConfigResult">
+        <include refid="selectTDeviceConfigVo"/>
+        <where>  
+            <if test="deviceCode != null  and deviceCode != ''"> and device_code = #{deviceCode}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="deviceType != null  and deviceType != ''"> and device_type = #{deviceType}</if>
+            <if test="stationId != null "> and station_id = #{stationId}</if>
+            <if test="ipAddress != null  and ipAddress != ''"> and ip_address = #{ipAddress}</if>
+            <if test="udpPort != null "> and udp_port = #{udpPort}</if>
+            <if test="configParams != null  and configParams != ''"> and config_params = #{configParams}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectTDeviceConfigByDeviceId" parameterType="Long" resultMap="TDeviceConfigResult">
+        <include refid="selectTDeviceConfigVo"/>
+        where device_id = #{deviceId}
+    </select>
+
+    <insert id="insertTDeviceConfig" parameterType="TDeviceConfig" useGeneratedKeys="true" keyProperty="deviceId">
+        insert into t_device_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceCode != null and deviceCode != ''">device_code,</if>
+            <if test="deviceName != null and deviceName != ''">device_name,</if>
+            <if test="deviceType != null and deviceType != ''">device_type,</if>
+            <if test="stationId != null">station_id,</if>
+            <if test="ipAddress != null">ip_address,</if>
+            <if test="udpPort != null">udp_port,</if>
+            <if test="configParams != null">config_params,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceCode != null and deviceCode != ''">#{deviceCode},</if>
+            <if test="deviceName != null and deviceName != ''">#{deviceName},</if>
+            <if test="deviceType != null and deviceType != ''">#{deviceType},</if>
+            <if test="stationId != null">#{stationId},</if>
+            <if test="ipAddress != null">#{ipAddress},</if>
+            <if test="udpPort != null">#{udpPort},</if>
+            <if test="configParams != null">#{configParams},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTDeviceConfig" parameterType="TDeviceConfig">
+        update t_device_config
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceCode != null and deviceCode != ''">device_code = #{deviceCode},</if>
+            <if test="deviceName != null and deviceName != ''">device_name = #{deviceName},</if>
+            <if test="deviceType != null and deviceType != ''">device_type = #{deviceType},</if>
+            <if test="stationId != null">station_id = #{stationId},</if>
+            <if test="ipAddress != null">ip_address = #{ipAddress},</if>
+            <if test="udpPort != null">udp_port = #{udpPort},</if>
+            <if test="configParams != null">config_params = #{configParams},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where device_id = #{deviceId}
+    </update>
+
+    <delete id="deleteTDeviceConfigByDeviceId" parameterType="Long">
+        delete from t_device_config where device_id = #{deviceId}
+    </delete>
+
+    <delete id="deleteTDeviceConfigByDeviceIds" parameterType="String">
+        delete from t_device_config where device_id in 
+        <foreach item="deviceId" collection="array" open="(" separator="," close=")">
+            #{deviceId}
+        </foreach>
+    </delete>
+</mapper>

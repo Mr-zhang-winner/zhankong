@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ruoyi-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              lowerCaseServiceId: true
+              enabled: true
+          routes:
+            - id: ruoyi-auth
+              uri: http://localhost:9200
+              predicates:
+                - Path=/auth/**
+              filters:
+                - StripPrefix=1
+            - id: ruoyi-system
+              uri: http://localhost:9201
+              predicates:
+                - Path=/system/**
+              filters:
+                - StripPrefix=1
+            - id: ruoyi-gen
+              uri: http://localhost:9202
+              predicates:
+                - Path=/code/**
+              filters:
+                - StripPrefix=1
+            - id: ruoyi-job
+              uri: http://localhost:9203
+              predicates:
+                - Path=/schedule/**
+              filters:
+                - StripPrefix=1
+            - id: ruoyi-file
+              uri: http://localhost:9300
+              predicates:
+                - Path=/file/**
+              filters:
+                - StripPrefix=1
+            - id: ruoyi-xkd
+              uri: lb://ruoyi-xkd
+              predicates:
+                - Path=/xkd/**
+              filters:
+                - StripPrefix=1
+security:
+  captcha:
+    enabled: true
+    type: math
+  ignore:
+    whites:
+      - /auth/logout
+      - /auth/login
+      - /auth/register
+      - /code

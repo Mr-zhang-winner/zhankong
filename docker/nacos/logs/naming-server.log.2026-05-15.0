@@ -1,0 +1,4 @@
+2026-05-15 10:03:10,250 INFO Client connection 1778810590186_172.19.0.1_46734 connect
+
+2026-05-15 10:03:10,390 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gen', ephemeral=true, revision=0}, 1778810590186_172.19.0.1_46734
+

@@ -1,0 +1,74 @@
+2026-05-13 09:10:32,466 INFO Client connection 1778634632406_172.19.0.1_55114 connect
+
+2026-05-13 09:10:32,576 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=0}, 1778634632406_172.19.0.1_55114
+
+2026-05-13 10:11:08,406 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=1}, 1778634632406_172.19.0.1_55114
+
+2026-05-13 10:11:08,410 INFO Client connection 1778634632406_172.19.0.1_55114 disconnect, remove instances and subscribers
+
+2026-05-13 10:12:29,921 WARN namespace : public, [DEFAULT_GROUP@@ruoyi-xkd] services are automatically cleaned
+
+2026-05-13 10:25:16,977 INFO Client connection 1778639116912_172.19.0.1_57632 connect
+
+2026-05-13 10:25:17,086 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=0}, 1778639116912_172.19.0.1_57632
+
+2026-05-13 10:47:35,651 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=1}, 1778639116912_172.19.0.1_57632
+
+2026-05-13 10:47:35,670 INFO Client connection 1778639116912_172.19.0.1_57632 disconnect, remove instances and subscribers
+
+2026-05-13 10:47:35,988 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, 1778566688391_172.19.0.1_38362
+
+2026-05-13 10:47:35,995 INFO Client connection 1778566688391_172.19.0.1_38362 disconnect, remove instances and subscribers
+
+2026-05-13 10:47:36,093 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=1}, 1778566648265_172.19.0.1_34622
+
+2026-05-13 10:47:36,331 INFO Client connection 1778566648265_172.19.0.1_34622 disconnect, remove instances and subscribers
+
+2026-05-13 10:47:36,406 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=1}, 1778566601701_172.19.0.1_55902
+
+2026-05-13 10:47:36,806 INFO Client connection 1778566601701_172.19.0.1_55902 disconnect, remove instances and subscribers
+
+2026-05-13 10:47:43,849 INFO Client connection 1778640463846_172.19.0.1_60550 connect
+
+2026-05-13 10:47:48,994 INFO Client connection 1778566634449_172.19.0.1_57062 disconnect, remove instances and subscribers
+
+2026-05-13 10:47:49,563 INFO Client connection 1778640463846_172.19.0.1_60550 disconnect, remove instances and subscribers
+
+2026-05-13 10:49:29,925 WARN namespace : public, [DEFAULT_GROUP@@ruoyi-gateway] services are automatically cleaned
+
+2026-05-13 10:49:29,925 WARN namespace : public, [DEFAULT_GROUP@@ruoyi-system] services are automatically cleaned
+
+2026-05-13 10:49:29,925 WARN namespace : public, [DEFAULT_GROUP@@ruoyi-auth] services are automatically cleaned
+
+2026-05-13 10:49:29,925 WARN namespace : public, [DEFAULT_GROUP@@ruoyi-xkd] services are automatically cleaned
+
+2026-05-13 14:39:15,334 WARN [NamingServerHttpClientManager] Start destroying HTTP-Client
+
+2026-05-13 14:39:17,707 ERROR [HEALTH-CHECK] error while processing NIO task
+
+java.lang.InterruptedException: null
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2014)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2088)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.processTask(TcpSuperSenseProcessor.java:137)
+	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.run(TcpSuperSenseProcessor.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+2026-05-13 14:39:17,707 ERROR [HEALTH-CHECK-V2] error while processing NIO task
+
+java.lang.InterruptedException: null
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2014)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2088)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+	at com.alibaba.nacos.naming.healthcheck.v2.processor.TcpHealthCheckProcessor.processTask(TcpHealthCheckProcessor.java:122)
+	at com.alibaba.nacos.naming.healthcheck.v2.processor.TcpHealthCheckProcessor.run(TcpHealthCheckProcessor.java:139)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+2026-05-13 14:39:18,942 WARN [NamingServerHttpClientManager] Destruction of the end
+

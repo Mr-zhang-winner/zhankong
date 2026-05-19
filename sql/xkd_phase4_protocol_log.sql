@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS t_antenna_protocol_log (
+    log_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '日志ID',
+    device_code VARCHAR(64) DEFAULT NULL COMMENT '设备编号',
+    direction VARCHAR(20) NOT NULL COMMENT '方向：SEND/RECEIVE',
+    remote_ip VARCHAR(64) DEFAULT NULL COMMENT '远端IP',
+    remote_port INT DEFAULT NULL COMMENT '远端端口',
+    cmd_code VARCHAR(20) NOT NULL COMMENT '命令码',
+    cmd_name VARCHAR(100) DEFAULT NULL COMMENT '命令名称',
+    frame_hex TEXT COMMENT '完整原始帧HEX',
+    payload_hex TEXT COMMENT '参数体HEX',
+    payload_json TEXT COMMENT '解析后的内容JSON',
+    check_status VARCHAR(20) DEFAULT NULL COMMENT '校验状态：OK/FAILED',
+    result_status VARCHAR(50) DEFAULT NULL COMMENT '结果状态',
+    error_msg VARCHAR(500) DEFAULT NULL COMMENT '错误信息',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (log_id),
+    KEY idx_device_code (device_code),
+    KEY idx_direction (direction),
+    KEY idx_cmd_code (cmd_code),
+    KEY idx_create_time (create_time)
+) COMMENT='天线协议收发日志表';

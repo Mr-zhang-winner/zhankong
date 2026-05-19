@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TDeviceStatusMapper">
+    
+    <resultMap type="TDeviceStatus" id="TDeviceStatusResult">
+        <result property="statusId"    column="status_id"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceCode"    column="device_code"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="azimuth"    column="azimuth"    />
+        <result property="elevation"    column="elevation"    />
+        <result property="voltage"    column="voltage"    />
+        <result property="workParams"    column="work_params"    />
+        <result property="runStatus"    column="run_status"    />
+        <result property="collectTime"    column="collect_time"    />
+        <result property="reportTime"    column="report_time"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectTDeviceStatusVo">
+        select status_id, device_id, device_code, device_name, azimuth, elevation, voltage, work_params, run_status, collect_time, report_time, create_time from t_device_status
+    </sql>
+
+    <select id="selectTDeviceStatusList" parameterType="TDeviceStatus" resultMap="TDeviceStatusResult">
+        <include refid="selectTDeviceStatusVo"/>
+        <where>  
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceCode != null  and deviceCode != ''"> and device_code = #{deviceCode}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="azimuth != null "> and azimuth = #{azimuth}</if>
+            <if test="elevation != null "> and elevation = #{elevation}</if>
+            <if test="voltage != null "> and voltage = #{voltage}</if>
+            <if test="workParams != null  and workParams != ''"> and work_params = #{workParams}</if>
+            <if test="runStatus != null  and runStatus != ''"> and run_status = #{runStatus}</if>
+            <if test="collectTime != null "> and collect_time = #{collectTime}</if>
+            <if test="reportTime != null "> and report_time = #{reportTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectTDeviceStatusByStatusId" parameterType="Long" resultMap="TDeviceStatusResult">
+        <include refid="selectTDeviceStatusVo"/>
+        where status_id = #{statusId}
+    </select>
+
+    <insert id="insertTDeviceStatus" parameterType="TDeviceStatus" useGeneratedKeys="true" keyProperty="statusId">
+        insert into t_device_status
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">device_id,</if>
+            <if test="deviceCode != null and deviceCode != ''">device_code,</if>
+            <if test="deviceName != null">device_name,</if>
+            <if test="azimuth != null">azimuth,</if>
+            <if test="elevation != null">elevation,</if>
+            <if test="voltage != null">voltage,</if>
+            <if test="workParams != null">work_params,</if>
+            <if test="runStatus != null and runStatus != ''">run_status,</if>
+            <if test="collectTime != null">collect_time,</if>
+            <if test="reportTime != null">report_time,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="deviceCode != null and deviceCode != ''">#{deviceCode},</if>
+            <if test="deviceName != null">#{deviceName},</if>
+            <if test="azimuth != null">#{azimuth},</if>
+            <if test="elevation != null">#{elevation},</if>
+            <if test="voltage != null">#{voltage},</if>
+            <if test="workParams != null">#{workParams},</if>
+            <if test="runStatus != null and runStatus != ''">#{runStatus},</if>
+            <if test="collectTime != null">#{collectTime},</if>
+            <if test="reportTime != null">#{reportTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTDeviceStatus" parameterType="TDeviceStatus">
+        update t_device_status
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="deviceCode != null and deviceCode != ''">device_code = #{deviceCode},</if>
+            <if test="deviceName != null">device_name = #{deviceName},</if>
+            <if test="azimuth != null">azimuth = #{azimuth},</if>
+            <if test="elevation != null">elevation = #{elevation},</if>
+            <if test="voltage != null">voltage = #{voltage},</if>
+            <if test="workParams != null">work_params = #{workParams},</if>
+            <if test="runStatus != null and runStatus != ''">run_status = #{runStatus},</if>
+            <if test="collectTime != null">collect_time = #{collectTime},</if>
+            <if test="reportTime != null">report_time = #{reportTime},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where status_id = #{statusId}
+    </update>
+
+    <delete id="deleteTDeviceStatusByStatusId" parameterType="Long">
+        delete from t_device_status where status_id = #{statusId}
+    </delete>
+
+    <delete id="deleteTDeviceStatusByStatusIds" parameterType="String">
+        delete from t_device_status where status_id in 
+        <foreach item="statusId" collection="array" open="(" separator="," close=")">
+            #{statusId}
+        </foreach>
+    </delete>
+</mapper>

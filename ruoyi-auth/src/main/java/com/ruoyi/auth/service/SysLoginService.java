@@ -42,7 +42,7 @@ public class SysLoginService
     /**
      * 登录
      */
-    public LoginUser login(String username, String password)
+    public LoginUser login(String username, String password, String code, String uuid)
     {
         // 用户名或密码为空 错误
         if (StringUtils.isAnyBlank(username, password))
@@ -50,6 +50,8 @@ public class SysLoginService
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户/密码必须填写");
             throw new ServiceException("用户/密码必须填写");
         }
+        // 验证码校验
+        validateCaptcha(username, code, uuid);
         // 密码如果不在指定范围内 错误
         if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
                 || password.length() > UserConstants.PASSWORD_MAX_LENGTH)
@@ -181,5 +183,31 @@ public class SysLoginService
             throw new ServiceException(registerResult.getMsg());
         }
         recordLogService.recordLogininfor(username, Constants.REGISTER, "注册成功");
+    }
+
+    /**
+     * 校验验证码
+     */
+    public void validateCaptcha(String username, String code, String uuid)
+    {
+        String verifyKey = CacheConstants.CAPTCHA_CODE_KEY + StringUtils.nvl(uuid, "");
+        String captcha = redisService.getCacheObject(verifyKey);
+        redisService.deleteObject(verifyKey);
+
+        if (StringUtils.isEmpty(code))
+        {
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "验证码不能为空");
+            throw new ServiceException("验证码不能为空");
+        }
+        if (StringUtils.isEmpty(captcha))
+        {
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "验证码已失效");
+            throw new ServiceException("验证码已失效");
+        }
+        if (!code.equalsIgnoreCase(captcha))
+        {
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "验证码错误");
+            throw new ServiceException("验证码错误");
+        }
     }
 }

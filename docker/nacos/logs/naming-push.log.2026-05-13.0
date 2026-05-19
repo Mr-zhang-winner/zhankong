@@ -1,0 +1,72 @@
+2026-05-13 09:10:33,162 INFO [PUSH-SUCC] 40ms, all delay time 586ms, SLA 586ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=1}, DataSize=1, target=10.102.128.108
+
+2026-05-13 10:11:09,004 INFO [PUSH-SUCC] 4ms, all delay time 598ms, SLA 598ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=2}, DataSize=0, target=10.102.128.108
+
+2026-05-13 10:25:17,638 INFO [PUSH-SUCC] 19ms, all delay time 551ms, SLA 551ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=1}, DataSize=1, target=10.102.128.108
+
+2026-05-13 10:47:36,224 INFO [PUSH-SUCC] 65ms, all delay time 572ms, SLA 572ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=2}, DataSize=0, target=10.102.128.108
+
+2026-05-13 10:47:36,743 ERROR [PUSH-FAIL] 183ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=2}, reason=Stream is already completed, no further calls are allowed, target=10.102.128.108
+
+2026-05-13 10:47:36,743 ERROR [PUSH-FAIL] 83ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=2}, reason=Stream is already completed, no further calls are allowed, target=10.102.128.108
+
+2026-05-13 10:47:36,859 ERROR Reason detail: 
+
+java.lang.IllegalStateException: Stream is already completed, no further calls are allowed
+	at com.google.common.base.Preconditions.checkState(Preconditions.java:508)
+	at io.grpc.stub.ServerCalls$ServerCallStreamObserverImpl.onNext(ServerCalls.java:346)
+	at com.alibaba.nacos.core.remote.grpc.GrpcConnection.sendRequestNoAck(GrpcConnection.java:62)
+	at com.alibaba.nacos.core.remote.grpc.GrpcConnection.sendRequestInner(GrpcConnection.java:94)
+	at com.alibaba.nacos.core.remote.grpc.GrpcConnection.asyncRequest(GrpcConnection.java:117)
+	at com.alibaba.nacos.core.remote.RpcPushService.pushWithCallback(RpcPushService.java:55)
+	at com.alibaba.nacos.naming.push.v2.executor.PushExecutorRpcImpl.doPushWithCallback(PushExecutorRpcImpl.java:50)
+	at com.alibaba.nacos.naming.push.v2.executor.PushExecutorDelegate.doPushWithCallback(PushExecutorDelegate.java:52)
+	at com.alibaba.nacos.naming.push.v2.task.PushExecuteTask.run(PushExecuteTask.java:66)
+	at com.alibaba.nacos.common.task.engine.TaskExecuteWorker$InnerWorker.run(TaskExecuteWorker.java:116)
+2026-05-13 10:47:36,859 ERROR Reason detail: 
+
+java.lang.IllegalStateException: Stream is already completed, no further calls are allowed
+	at com.google.common.base.Preconditions.checkState(Preconditions.java:508)
+	at io.grpc.stub.ServerCalls$ServerCallStreamObserverImpl.onNext(ServerCalls.java:346)
+	at com.alibaba.nacos.core.remote.grpc.GrpcConnection.sendRequestNoAck(GrpcConnection.java:62)
+	at com.alibaba.nacos.core.remote.grpc.GrpcConnection.sendRequestInner(GrpcConnection.java:94)
+	at com.alibaba.nacos.core.remote.grpc.GrpcConnection.asyncRequest(GrpcConnection.java:117)
+	at com.alibaba.nacos.core.remote.RpcPushService.pushWithCallback(RpcPushService.java:55)
+	at com.alibaba.nacos.naming.push.v2.executor.PushExecutorRpcImpl.doPushWithCallback(PushExecutorRpcImpl.java:50)
+	at com.alibaba.nacos.naming.push.v2.executor.PushExecutorDelegate.doPushWithCallback(PushExecutorDelegate.java:52)
+	at com.alibaba.nacos.naming.push.v2.task.PushExecuteTask.run(PushExecuteTask.java:66)
+	at com.alibaba.nacos.common.task.engine.TaskExecuteWorker$InnerWorker.run(TaskExecuteWorker.java:116)
+2026-05-13 10:47:41,560 ERROR [PUSH-FAIL] 5000ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=2}, reason=Timeout After 5000 milliseconds,requestId =19, target=10.102.128.108
+
+2026-05-13 10:47:41,561 ERROR Reason detail: 
+
+java.util.concurrent.TimeoutException: Timeout After 5000 milliseconds,requestId =19
+	at com.alibaba.nacos.api.remote.DefaultRequestFuture$TimeoutHandler.run(DefaultRequestFuture.java:194)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+2026-05-13 10:47:41,661 ERROR [PUSH-FAIL] 5001ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=2}, reason=Timeout After 5000 milliseconds,requestId =20, target=10.102.128.108
+
+2026-05-13 10:47:41,662 ERROR Reason detail: 
+
+java.util.concurrent.TimeoutException: Timeout After 5000 milliseconds,requestId =20
+	at com.alibaba.nacos.api.remote.DefaultRequestFuture$TimeoutHandler.run(DefaultRequestFuture.java:194)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+2026-05-13 10:47:44,471 INFO [PUSH-SUCC] 1ms, all delay time 518ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=2}, DataSize=0
+
+2026-05-13 10:47:44,471 INFO [PUSH-SUCC] 1ms, all delay time 518ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=2}, DataSize=0
+
+2026-05-13 10:47:44,522 INFO [PUSH-SUCC] 52ms, all delay time 569ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=2}, DataSize=0
+
+2026-05-13 10:47:44,523 INFO [PUSH-SUCC] 53ms, all delay time 570ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=2}, DataSize=0
+

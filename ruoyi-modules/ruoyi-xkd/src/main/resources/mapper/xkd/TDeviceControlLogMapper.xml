@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TDeviceControlLogMapper">
+    
+    <resultMap type="TDeviceControlLog" id="TDeviceControlLogResult">
+        <result property="controlId"    column="control_id"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceCode"    column="device_code"    />
+        <result property="commandType"    column="command_type"    />
+        <result property="commandKey"    column="command_key"    />
+        <result property="commandContent"    column="command_content"    />
+        <result property="cmdCode"    column="cmd_code"    />
+        <result property="frameHex"    column="frame_hex"    />
+        <result property="ackCmd"    column="ack_cmd"    />
+        <result property="ackStatus"    column="ack_status"    />
+        <result property="ackContent"    column="ack_content"    />
+        <result property="sendStatus"    column="send_status"    />
+        <result property="sendTime"    column="send_time"    />
+        <result property="ackTime"    column="ack_time"    />
+        <result property="operator"    column="operator"    />
+        <result property="errorMsg"    column="error_msg"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectTDeviceControlLogVo">
+        select control_id, device_id, device_code, command_type, command_key, command_content, cmd_code, frame_hex, ack_cmd, ack_status, ack_content, send_status, send_time, ack_time, operator, error_msg, create_time from t_device_control_log
+    </sql>
+
+    <select id="selectTDeviceControlLogList" parameterType="TDeviceControlLog" resultMap="TDeviceControlLogResult">
+        <include refid="selectTDeviceControlLogVo"/>
+        <where>  
+            <if test="deviceId != null "> and device_id = #{deviceId}</if>
+            <if test="deviceCode != null  and deviceCode != ''"> and device_code = #{deviceCode}</if>
+            <if test="commandType != null  and commandType != ''"> and command_type = #{commandType}</if>
+            <if test="commandKey != null  and commandKey != ''"> and command_key = #{commandKey}</if>
+            <if test="commandContent != null  and commandContent != ''"> and command_content = #{commandContent}</if>
+            <if test="cmdCode != null  and cmdCode != ''"> and cmd_code = #{cmdCode}</if>
+            <if test="frameHex != null  and frameHex != ''"> and frame_hex = #{frameHex}</if>
+            <if test="ackCmd != null  and ackCmd != ''"> and ack_cmd = #{ackCmd}</if>
+            <if test="ackStatus != null  and ackStatus != ''"> and ack_status = #{ackStatus}</if>
+            <if test="ackContent != null  and ackContent != ''"> and ack_content = #{ackContent}</if>
+            <if test="sendStatus != null  and sendStatus != ''"> and send_status = #{sendStatus}</if>
+            <if test="sendTime != null "> and send_time = #{sendTime}</if>
+            <if test="ackTime != null "> and ack_time = #{ackTime}</if>
+            <if test="operator != null  and operator != ''"> and operator = #{operator}</if>
+            <if test="errorMsg != null  and errorMsg != ''"> and error_msg = #{errorMsg}</if>
+        </where>
+    </select>
+    
+    <select id="selectTDeviceControlLogByControlId" parameterType="Long" resultMap="TDeviceControlLogResult">
+        <include refid="selectTDeviceControlLogVo"/>
+        where control_id = #{controlId}
+    </select>
+
+    <insert id="insertTDeviceControlLog" parameterType="TDeviceControlLog" useGeneratedKeys="true" keyProperty="controlId">
+        insert into t_device_control_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">device_id,</if>
+            <if test="deviceCode != null and deviceCode != ''">device_code,</if>
+            <if test="commandType != null and commandType != ''">command_type,</if>
+            <if test="commandKey != null">command_key,</if>
+            <if test="commandContent != null">command_content,</if>
+            <if test="cmdCode != null">cmd_code,</if>
+            <if test="frameHex != null">frame_hex,</if>
+            <if test="ackCmd != null">ack_cmd,</if>
+            <if test="ackStatus != null">ack_status,</if>
+            <if test="ackContent != null">ack_content,</if>
+            <if test="sendStatus != null">send_status,</if>
+            <if test="sendTime != null">send_time,</if>
+            <if test="ackTime != null">ack_time,</if>
+            <if test="operator != null">operator,</if>
+            <if test="errorMsg != null">error_msg,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceId != null">#{deviceId},</if>
+            <if test="deviceCode != null and deviceCode != ''">#{deviceCode},</if>
+            <if test="commandType != null and commandType != ''">#{commandType},</if>
+            <if test="commandKey != null">#{commandKey},</if>
+            <if test="commandContent != null">#{commandContent},</if>
+            <if test="cmdCode != null">#{cmdCode},</if>
+            <if test="frameHex != null">#{frameHex},</if>
+            <if test="ackCmd != null">#{ackCmd},</if>
+            <if test="ackStatus != null">#{ackStatus},</if>
+            <if test="ackContent != null">#{ackContent},</if>
+            <if test="sendStatus != null">#{sendStatus},</if>
+            <if test="sendTime != null">#{sendTime},</if>
+            <if test="ackTime != null">#{ackTime},</if>
+            <if test="operator != null">#{operator},</if>
+            <if test="errorMsg != null">#{errorMsg},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTDeviceControlLog" parameterType="TDeviceControlLog">
+        update t_device_control_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceId != null">device_id = #{deviceId},</if>
+            <if test="deviceCode != null and deviceCode != ''">device_code = #{deviceCode},</if>
+            <if test="commandType != null and commandType != ''">command_type = #{commandType},</if>
+            <if test="commandKey != null">command_key = #{commandKey},</if>
+            <if test="commandContent != null">command_content = #{commandContent},</if>
+            <if test="cmdCode != null">cmd_code = #{cmdCode},</if>
+            <if test="frameHex != null">frame_hex = #{frameHex},</if>
+            <if test="ackCmd != null">ack_cmd = #{ackCmd},</if>
+            <if test="ackStatus != null">ack_status = #{ackStatus},</if>
+            <if test="ackContent != null">ack_content = #{ackContent},</if>
+            <if test="sendStatus != null">send_status = #{sendStatus},</if>
+            <if test="sendTime != null">send_time = #{sendTime},</if>
+            <if test="ackTime != null">ack_time = #{ackTime},</if>
+            <if test="operator != null">operator = #{operator},</if>
+            <if test="errorMsg != null">error_msg = #{errorMsg},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where control_id = #{controlId}
+    </update>
+
+    <delete id="deleteTDeviceControlLogByControlId" parameterType="Long">
+        delete from t_device_control_log where control_id = #{controlId}
+    </delete>
+
+    <delete id="deleteTDeviceControlLogByControlIds" parameterType="String">
+        delete from t_device_control_log where control_id in 
+        <foreach item="controlId" collection="array" open="(" separator="," close=")">
+            #{controlId}
+        </foreach>
+    </delete>
+
+    <select id="selectLatestControlLogByDeviceAndKey" resultMap="TDeviceControlLogResult">
+        select *
+        from t_device_control_log
+        where device_code = #{deviceCode}
+          and command_key = #{commandKey}
+        order by control_id desc
+        limit 1
+    </select>
+</mapper>

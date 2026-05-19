@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TAntennaProtocolLogMapper">
+    
+    <resultMap type="TAntennaProtocolLog" id="TAntennaProtocolLogResult">
+        <result property="logId"    column="log_id"    />
+        <result property="deviceCode"    column="device_code"    />
+        <result property="direction"    column="direction"    />
+        <result property="remoteIp"    column="remote_ip"    />
+        <result property="remotePort"    column="remote_port"    />
+        <result property="cmdCode"    column="cmd_code"    />
+        <result property="cmdName"    column="cmd_name"    />
+        <result property="frameHex"    column="frame_hex"    />
+        <result property="payloadHex"    column="payload_hex"    />
+        <result property="payloadJson"    column="payload_json"    />
+        <result property="checkStatus"    column="check_status"    />
+        <result property="resultStatus"    column="result_status"    />
+        <result property="errorMsg"    column="error_msg"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectTAntennaProtocolLogVo">
+        select log_id, device_code, direction, remote_ip, remote_port, cmd_code, cmd_name, frame_hex, payload_hex, payload_json, check_status, result_status, error_msg, create_time from t_antenna_protocol_log
+    </sql>
+
+    <select id="selectTAntennaProtocolLogList" parameterType="TAntennaProtocolLog" resultMap="TAntennaProtocolLogResult">
+        <include refid="selectTAntennaProtocolLogVo"/>
+        <where>  
+            <if test="deviceCode != null  and deviceCode != ''"> and device_code = #{deviceCode}</if>
+            <if test="direction != null  and direction != ''"> and direction = #{direction}</if>
+            <if test="remoteIp != null  and remoteIp != ''"> and remote_ip = #{remoteIp}</if>
+            <if test="remotePort != null "> and remote_port = #{remotePort}</if>
+            <if test="cmdCode != null  and cmdCode != ''"> and cmd_code = #{cmdCode}</if>
+            <if test="cmdName != null  and cmdName != ''"> and cmd_name like concat('%', #{cmdName}, '%')</if>
+            <if test="frameHex != null  and frameHex != ''"> and frame_hex = #{frameHex}</if>
+            <if test="payloadHex != null  and payloadHex != ''"> and payload_hex = #{payloadHex}</if>
+            <if test="payloadJson != null  and payloadJson != ''"> and payload_json = #{payloadJson}</if>
+            <if test="checkStatus != null  and checkStatus != ''"> and check_status = #{checkStatus}</if>
+            <if test="resultStatus != null  and resultStatus != ''"> and result_status = #{resultStatus}</if>
+            <if test="errorMsg != null  and errorMsg != ''"> and error_msg = #{errorMsg}</if>
+        </where>
+    </select>
+    
+    <select id="selectTAntennaProtocolLogByLogId" parameterType="Long" resultMap="TAntennaProtocolLogResult">
+        <include refid="selectTAntennaProtocolLogVo"/>
+        where log_id = #{logId}
+    </select>
+
+    <insert id="insertTAntennaProtocolLog" parameterType="TAntennaProtocolLog" useGeneratedKeys="true" keyProperty="logId">
+        insert into t_antenna_protocol_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceCode != null">device_code,</if>
+            <if test="direction != null and direction != ''">direction,</if>
+            <if test="remoteIp != null">remote_ip,</if>
+            <if test="remotePort != null">remote_port,</if>
+            <if test="cmdCode != null and cmdCode != ''">cmd_code,</if>
+            <if test="cmdName != null">cmd_name,</if>
+            <if test="frameHex != null">frame_hex,</if>
+            <if test="payloadHex != null">payload_hex,</if>
+            <if test="payloadJson != null">payload_json,</if>
+            <if test="checkStatus != null">check_status,</if>
+            <if test="resultStatus != null">result_status,</if>
+            <if test="errorMsg != null">error_msg,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceCode != null">#{deviceCode},</if>
+            <if test="direction != null and direction != ''">#{direction},</if>
+            <if test="remoteIp != null">#{remoteIp},</if>
+            <if test="remotePort != null">#{remotePort},</if>
+            <if test="cmdCode != null and cmdCode != ''">#{cmdCode},</if>
+            <if test="cmdName != null">#{cmdName},</if>
+            <if test="frameHex != null">#{frameHex},</if>
+            <if test="payloadHex != null">#{payloadHex},</if>
+            <if test="payloadJson != null">#{payloadJson},</if>
+            <if test="checkStatus != null">#{checkStatus},</if>
+            <if test="resultStatus != null">#{resultStatus},</if>
+            <if test="errorMsg != null">#{errorMsg},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTAntennaProtocolLog" parameterType="TAntennaProtocolLog">
+        update t_antenna_protocol_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceCode != null">device_code = #{deviceCode},</if>
+            <if test="direction != null and direction != ''">direction = #{direction},</if>
+            <if test="remoteIp != null">remote_ip = #{remoteIp},</if>
+            <if test="remotePort != null">remote_port = #{remotePort},</if>
+            <if test="cmdCode != null and cmdCode != ''">cmd_code = #{cmdCode},</if>
+            <if test="cmdName != null">cmd_name = #{cmdName},</if>
+            <if test="frameHex != null">frame_hex = #{frameHex},</if>
+            <if test="payloadHex != null">payload_hex = #{payloadHex},</if>
+            <if test="payloadJson != null">payload_json = #{payloadJson},</if>
+            <if test="checkStatus != null">check_status = #{checkStatus},</if>
+            <if test="resultStatus != null">result_status = #{resultStatus},</if>
+            <if test="errorMsg != null">error_msg = #{errorMsg},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where log_id = #{logId}
+    </update>
+
+    <delete id="deleteTAntennaProtocolLogByLogId" parameterType="Long">
+        delete from t_antenna_protocol_log where log_id = #{logId}
+    </delete>
+
+    <delete id="deleteTAntennaProtocolLogByLogIds" parameterType="String">
+        delete from t_antenna_protocol_log where log_id in 
+        <foreach item="logId" collection="array" open="(" separator="," close=")">
+            #{logId}
+        </foreach>
+    </delete>
+</mapper>

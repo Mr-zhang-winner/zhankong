@@ -1,0 +1,18 @@
+2026-05-18 08:41:55,542 INFO [PUSH] Task merge for Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=1}
+
+2026-05-18 08:41:56,097 INFO [PUSH-SUCC] 16ms, all delay time 590ms, SLA 642ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=1}, DataSize=1, target=10.102.128.108
+
+2026-05-18 08:42:26,215 INFO [PUSH-SUCC] 5ms, all delay time 530ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=1}, DataSize=1
+
+2026-05-18 08:42:26,219 INFO [PUSH-SUCC] 9ms, all delay time 534ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, DataSize=1
+
+2026-05-18 08:43:26,269 INFO [PUSH-SUCC] 3ms, all delay time 582ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=1}, DataSize=1
+
+2026-05-18 10:02:49,651 INFO [PUSH-SUCC] 10ms, all delay time 593ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, DataSize=1
+
+2026-05-18 13:57:22,728 INFO [PUSH-SUCC] 61ms, all delay time 653ms, SLA 653ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=2}, DataSize=0, target=10.102.128.108
+
+2026-05-18 13:57:43,489 INFO [PUSH-SUCC] 4ms, all delay time 560ms, SLA 560ms, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=3}, DataSize=1, target=10.102.128.108
+
+2026-05-18 13:58:47,050 INFO [PUSH-SUCC] 11ms, all delay time 580ms for subscriber 10.102.128.108, Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, DataSize=1
+

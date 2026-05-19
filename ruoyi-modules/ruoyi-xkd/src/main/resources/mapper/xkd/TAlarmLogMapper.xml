@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.xkd.mapper.TAlarmLogMapper">
+    
+    <resultMap type="TAlarmLog" id="TAlarmLogResult">
+        <result property="alarmId"    column="alarm_id"    />
+        <result property="alarmType"    column="alarm_type"    />
+        <result property="alarmLevel"    column="alarm_level"    />
+        <result property="alarmDesc"    column="alarm_desc"    />
+        <result property="alarmLocation"    column="alarm_location"    />
+        <result property="relatedId"    column="related_id"    />
+        <result property="occurTime"    column="occur_time"    />
+        <result property="handleStatus"    column="handle_status"    />
+        <result property="handler"    column="handler"    />
+        <result property="handleTime"    column="handle_time"    />
+        <result property="handleResult"    column="handle_result"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectTAlarmLogVo">
+        select alarm_id, alarm_type, alarm_level, alarm_desc, alarm_location, related_id, occur_time, handle_status, handler, handle_time, handle_result, create_time from t_alarm_log
+    </sql>
+
+    <select id="selectTAlarmLogList" parameterType="TAlarmLog" resultMap="TAlarmLogResult">
+        <include refid="selectTAlarmLogVo"/>
+        <where>  
+            <if test="alarmType != null  and alarmType != ''"> and alarm_type = #{alarmType}</if>
+            <if test="alarmLevel != null  and alarmLevel != ''"> and alarm_level = #{alarmLevel}</if>
+            <if test="alarmDesc != null  and alarmDesc != ''"> and alarm_desc = #{alarmDesc}</if>
+            <if test="alarmLocation != null  and alarmLocation != ''"> and alarm_location = #{alarmLocation}</if>
+            <if test="relatedId != null  and relatedId != ''"> and related_id = #{relatedId}</if>
+            <if test="occurTime != null "> and occur_time = #{occurTime}</if>
+            <if test="handleStatus != null  and handleStatus != ''"> and handle_status = #{handleStatus}</if>
+            <if test="handler != null  and handler != ''"> and handler = #{handler}</if>
+            <if test="handleTime != null "> and handle_time = #{handleTime}</if>
+            <if test="handleResult != null  and handleResult != ''"> and handle_result = #{handleResult}</if>
+        </where>
+    </select>
+    
+    <select id="selectTAlarmLogByAlarmId" parameterType="Long" resultMap="TAlarmLogResult">
+        <include refid="selectTAlarmLogVo"/>
+        where alarm_id = #{alarmId}
+    </select>
+
+    <insert id="insertTAlarmLog" parameterType="TAlarmLog" useGeneratedKeys="true" keyProperty="alarmId">
+        insert into t_alarm_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alarmType != null and alarmType != ''">alarm_type,</if>
+            <if test="alarmLevel != null and alarmLevel != ''">alarm_level,</if>
+            <if test="alarmDesc != null and alarmDesc != ''">alarm_desc,</if>
+            <if test="alarmLocation != null">alarm_location,</if>
+            <if test="relatedId != null">related_id,</if>
+            <if test="occurTime != null">occur_time,</if>
+            <if test="handleStatus != null">handle_status,</if>
+            <if test="handler != null">handler,</if>
+            <if test="handleTime != null">handle_time,</if>
+            <if test="handleResult != null">handle_result,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alarmType != null and alarmType != ''">#{alarmType},</if>
+            <if test="alarmLevel != null and alarmLevel != ''">#{alarmLevel},</if>
+            <if test="alarmDesc != null and alarmDesc != ''">#{alarmDesc},</if>
+            <if test="alarmLocation != null">#{alarmLocation},</if>
+            <if test="relatedId != null">#{relatedId},</if>
+            <if test="occurTime != null">#{occurTime},</if>
+            <if test="handleStatus != null">#{handleStatus},</if>
+            <if test="handler != null">#{handler},</if>
+            <if test="handleTime != null">#{handleTime},</if>
+            <if test="handleResult != null">#{handleResult},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTAlarmLog" parameterType="TAlarmLog">
+        update t_alarm_log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="alarmType != null and alarmType != ''">alarm_type = #{alarmType},</if>
+            <if test="alarmLevel != null and alarmLevel != ''">alarm_level = #{alarmLevel},</if>
+            <if test="alarmDesc != null and alarmDesc != ''">alarm_desc = #{alarmDesc},</if>
+            <if test="alarmLocation != null">alarm_location = #{alarmLocation},</if>
+            <if test="relatedId != null">related_id = #{relatedId},</if>
+            <if test="occurTime != null">occur_time = #{occurTime},</if>
+            <if test="handleStatus != null">handle_status = #{handleStatus},</if>
+            <if test="handler != null">handler = #{handler},</if>
+            <if test="handleTime != null">handle_time = #{handleTime},</if>
+            <if test="handleResult != null">handle_result = #{handleResult},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where alarm_id = #{alarmId}
+    </update>
+
+    <delete id="deleteTAlarmLogByAlarmId" parameterType="Long">
+        delete from t_alarm_log where alarm_id = #{alarmId}
+    </delete>
+
+    <delete id="deleteTAlarmLogByAlarmIds" parameterType="String">
+        delete from t_alarm_log where alarm_id in 
+        <foreach item="alarmId" collection="array" open="(" separator="," close=")">
+            #{alarmId}
+        </foreach>
+    </delete>
+</mapper>

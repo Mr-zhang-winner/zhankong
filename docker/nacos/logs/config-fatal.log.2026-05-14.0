@@ -1,0 +1,4 @@
+2026-05-14 10:02:11,674 WARN [master-db] jdbc:mysql://host.docker.internal:2881/ry-config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai
+
+2026-05-14 10:02:16,745 WARN isQuickStart:false
+
