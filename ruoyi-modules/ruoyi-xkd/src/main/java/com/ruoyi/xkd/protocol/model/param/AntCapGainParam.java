@@ -1,5 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
+import lombok.Data;
+
 /**
  * 增益能力参数
  * 对应C语言的 ANT_CAP_GAIN_T
@@ -7,6 +9,7 @@ package com.ruoyi.xkd.protocol.model.param;
  * 
  * 参数格式：key(1字节) + len(1字节) + gain(1字节)
  */
+@Data
 public class AntCapGainParam {
     /** 参数键值 */
     private int key;
@@ -29,29 +32,5 @@ public class AntCapGainParam {
         this.key = key;
         this.gain = gain;
         this.len = 1;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public int getGain() {
-        return gain;
-    }
-
-    public void setGain(int gain) {
-        this.gain = gain;
     }
 }

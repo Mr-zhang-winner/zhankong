@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.union.U8Union;
+import lombok.Data;
 
 /**
  * 天线模式参数
@@ -9,6 +10,7 @@ import com.ruoyi.xkd.protocol.model.union.U8Union;
  * 
  * 参数格式：key(1字节) + len(1字节) + ant_mode(1字节)
  */
+@Data
 public class AntModeParam {
     /** 参数键值 */
     private int key;
@@ -34,30 +36,6 @@ public class AntModeParam {
         this.key = key;
         this.antMode = new U8Union(antMode);
         this.len = 1;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public U8Union getAntMode() {
-        return antMode;
-    }
-
-    public void setAntMode(U8Union antMode) {
-        this.antMode = antMode;
     }
 
     /**

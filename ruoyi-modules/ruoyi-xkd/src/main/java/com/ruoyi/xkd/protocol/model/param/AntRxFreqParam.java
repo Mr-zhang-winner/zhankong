@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.union.U32Union;
+import lombok.Data;
 
 /**
  * 接收频率参数
@@ -9,6 +10,7 @@ import com.ruoyi.xkd.protocol.model.union.U32Union;
  * 
  * 参数格式：key(1字节) + len(1字节) + ant_rx_freq(4字节)
  */
+@Data
 public class AntRxFreqParam {
     /** 参数键值 */
     private int key;
@@ -34,29 +36,5 @@ public class AntRxFreqParam {
         this.key = key;
         this.antRxFreq = new U32Union(freq);
         this.len = 4;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public U32Union getAntRxFreq() {
-        return antRxFreq;
-    }
-
-    public void setAntRxFreq(U32Union antRxFreq) {
-        this.antRxFreq = antRxFreq;
     }
 }

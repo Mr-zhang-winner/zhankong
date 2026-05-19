@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.union.U16Union;
+import lombok.Data;
 
 /**
  * BUC衰减参数
@@ -9,6 +10,7 @@ import com.ruoyi.xkd.protocol.model.union.U16Union;
  * 
  * 参数格式：key(1字节) + len(1字节) + ant_buc_decay(2字节)
  */
+@Data
 public class AntBucDecayParam {
     /** 参数键值 */
     private int key;
@@ -34,29 +36,5 @@ public class AntBucDecayParam {
         this.key = key;
         this.antBucDecay = new U16Union(decay);
         this.len = 2;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public U16Union getAntBucDecay() {
-        return antBucDecay;
-    }
-
-    public void setAntBucDecay(U16Union antBucDecay) {
-        this.antBucDecay = antBucDecay;
     }
 }

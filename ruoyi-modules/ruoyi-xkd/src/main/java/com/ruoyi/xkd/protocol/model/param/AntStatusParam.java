@@ -1,5 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
+import lombok.Data;
+
 /**
  * 天线状态参数
  * 对应C语言的天线状态参数结构
@@ -11,6 +13,7 @@ package com.ruoyi.xkd.protocol.model.param;
  *   0x00 = 正常
  *   0x01 = 异常
  */
+@Data
 public class AntStatusParam {
     /** 参数键值 */
     private int key;
@@ -35,29 +38,5 @@ public class AntStatusParam {
         this.key = key;
         this.antStatus = status;
         this.len = 1;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public int getAntStatus() {
-        return antStatus;
-    }
-
-    public void setAntStatus(int antStatus) {
-        this.antStatus = antStatus;
     }
 }

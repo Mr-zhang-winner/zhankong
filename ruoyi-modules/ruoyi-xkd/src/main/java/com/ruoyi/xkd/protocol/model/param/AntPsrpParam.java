@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.union.S16Union;
+import lombok.Data;
 
 /**
  * 信号强度参数
@@ -9,6 +10,7 @@ import com.ruoyi.xkd.protocol.model.union.S16Union;
  * 
  * 参数格式：key(1字节) + len(1字节) + ant_psrp(2字节)
  */
+@Data
 public class AntPsrpParam {
     /** 参数键值 */
     private int key;
@@ -34,29 +36,5 @@ public class AntPsrpParam {
         this.key = key;
         this.antPsrp = new S16Union(psrp);
         this.len = 2;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public S16Union getAntPsrp() {
-        return antPsrp;
-    }
-
-    public void setAntPsrp(S16Union antPsrp) {
-        this.antPsrp = antPsrp;
     }
 }

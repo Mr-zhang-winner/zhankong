@@ -2,6 +2,7 @@ package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.BitSw;
 import com.ruoyi.xkd.protocol.model.union.U8Union;
+import lombok.Data;
 
 /**
  * 开关状态参数
@@ -16,6 +17,7 @@ import com.ruoyi.xkd.protocol.model.union.U8Union;
  * - sw_follow: 跟踪开关状态（bit[5:4]）
  * - reserve: 保留位（bit[7:6]）
  */
+@Data
 public class AntSwStateParam {
     /** 参数键值 */
     private int key;
@@ -52,30 +54,6 @@ public class AntSwStateParam {
         this.key = key;
         this.swState = new U8Union(sw.getValue());
         this.len = 1;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public U8Union getSwState() {
-        return swState;
-    }
-
-    public void setSwState(U8Union swState) {
-        this.swState = swState;
     }
 
     /**

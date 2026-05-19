@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.union.U16Union;
+import lombok.Data;
 
 /**
  * 卫星ID参数
@@ -9,6 +10,7 @@ import com.ruoyi.xkd.protocol.model.union.U16Union;
  * 
  * 参数格式：key(1字节) + len(1字节) + sat_id(2字节)
  */
+@Data
 public class AntSatIdParam {
     /** 参数键值 */
     private int key;
@@ -34,29 +36,5 @@ public class AntSatIdParam {
         this.key = key;
         this.satId = new U16Union(id);
         this.len = 2;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public U16Union getSatId() {
-        return satId;
-    }
-
-    public void setSatId(U16Union satId) {
-        this.satId = satId;
     }
 }

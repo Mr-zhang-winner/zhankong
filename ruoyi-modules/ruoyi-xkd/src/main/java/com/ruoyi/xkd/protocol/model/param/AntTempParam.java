@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
 import com.ruoyi.xkd.protocol.model.union.S16Union;
+import lombok.Data;
 
 /**
  * 温度参数
@@ -9,6 +10,7 @@ import com.ruoyi.xkd.protocol.model.union.S16Union;
  * 
  * 参数格式：key(1字节) + len(1字节) + ant_temp(2字节)
  */
+@Data
 public class AntTempParam {
     /** 参数键值 */
     private int key;
@@ -34,29 +36,5 @@ public class AntTempParam {
         this.key = key;
         this.antTemp = new S16Union(temp);
         this.len = 2;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public S16Union getAntTemp() {
-        return antTemp;
-    }
-
-    public void setAntTemp(S16Union antTemp) {
-        this.antTemp = antTemp;
     }
 }

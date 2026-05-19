@@ -1,5 +1,7 @@
 package com.ruoyi.xkd.protocol.model.param;
 
+import lombok.Data;
+
 /**
  * 发射极化参数
  * 对应C语言的 ANT_TX_POL_T
@@ -7,6 +9,7 @@ package com.ruoyi.xkd.protocol.model.param;
  * 
  * 参数格式：key(1字节) + len(1字节) + ant_tx_pol(1字节)
  */
+@Data
 public class AntTxPolParam {
     /** 参数键值 */
     private int key;
@@ -31,29 +34,5 @@ public class AntTxPolParam {
         this.key = key;
         this.antTxPol = pol;
         this.len = 1;  // 固定长度
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public void setLen(int len) {
-        this.len = len;
-    }
-
-    public int getAntTxPol() {
-        return antTxPol;
-    }
-
-    public void setAntTxPol(int antTxPol) {
-        this.antTxPol = antTxPol;
     }
 }
