@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,8 +14,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-08
  */
-public class TTaskPlan extends BaseEntity
-{
+@Data
+public class TTaskPlan extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 任务ID */
@@ -69,136 +70,6 @@ public class TTaskPlan extends BaseEntity
     /** 冲突原因 */
     @Excel(name = "冲突原因")
     private String conflictReason;
-
-    public void setTaskId(Long taskId) 
-    {
-        this.taskId = taskId;
-    }
-
-    public Long getTaskId() 
-    {
-        return taskId;
-    }
-
-    public void setTaskName(String taskName) 
-    {
-        this.taskName = taskName;
-    }
-
-    public String getTaskName() 
-    {
-        return taskName;
-    }
-
-    public void setTaskType(String taskType) 
-    {
-        this.taskType = taskType;
-    }
-
-    public String getTaskType() 
-    {
-        return taskType;
-    }
-
-    public void setPeriod(String period) 
-    {
-        this.period = period;
-    }
-
-    public String getPeriod() 
-    {
-        return period;
-    }
-
-    public void setStartTime(Date startTime) 
-    {
-        this.startTime = startTime;
-    }
-
-    public Date getStartTime() 
-    {
-        return startTime;
-    }
-
-    public void setEndTime(Date endTime) 
-    {
-        this.endTime = endTime;
-    }
-
-    public Date getEndTime() 
-    {
-        return endTime;
-    }
-
-    public void setSatelliteId(Long satelliteId) 
-    {
-        this.satelliteId = satelliteId;
-    }
-
-    public Long getSatelliteId() 
-    {
-        return satelliteId;
-    }
-
-    public void setStationId(Long stationId) 
-    {
-        this.stationId = stationId;
-    }
-
-    public Long getStationId() 
-    {
-        return stationId;
-    }
-
-    public void setDeviceId(Long deviceId) 
-    {
-        this.deviceId = deviceId;
-    }
-
-    public Long getDeviceId() 
-    {
-        return deviceId;
-    }
-
-    public void setParamConfig(String paramConfig) 
-    {
-        this.paramConfig = paramConfig;
-    }
-
-    public String getParamConfig() 
-    {
-        return paramConfig;
-    }
-
-    public void setExecuteStatus(String executeStatus) 
-    {
-        this.executeStatus = executeStatus;
-    }
-
-    public String getExecuteStatus() 
-    {
-        return executeStatus;
-    }
-
-    public void setConflictStatus(String conflictStatus) 
-    {
-        this.conflictStatus = conflictStatus;
-    }
-
-    public String getConflictStatus() 
-    {
-        return conflictStatus;
-    }
-
-    public void setConflictReason(String conflictReason) 
-    {
-        this.conflictReason = conflictReason;
-    }
-
-    public String getConflictReason() 
-    {
-        return conflictReason;
-    }
 
     @Override
     public String toString() {

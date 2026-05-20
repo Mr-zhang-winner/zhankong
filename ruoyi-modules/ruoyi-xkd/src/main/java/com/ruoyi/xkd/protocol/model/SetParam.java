@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model;
 
 import com.ruoyi.xkd.protocol.model.param.*;
+import lombok.Data;
 
 /**
  * 设置参数集合
@@ -8,6 +9,7 @@ import com.ruoyi.xkd.protocol.model.param.*;
  * 包含天线设置命令（CMD_SET 0x80）的所有参数类型
  * 用于封装发送给天线设备的配置参数
  */
+@Data
 public class SetParam {
     /** 卫星切换参数 */
     private ChangeSatParam changeSatT;
@@ -42,85 +44,5 @@ public class SetParam {
         this.antTxPolT = new AntTxPolParam();
         this.antRxPolT = new AntRxPolParam();
         this.antSwStateT = new AntSwStateParam();
-    }
-
-    public ChangeSatParam getChangeSatT() {
-        return changeSatT;
-    }
-
-    public void setChangeSatT(ChangeSatParam changeSatT) {
-        this.changeSatT = changeSatT;
-    }
-
-    public AntTxFreqParam getAntTxFreqT() {
-        return antTxFreqT;
-    }
-
-    public void setAntTxFreqT(AntTxFreqParam antTxFreqT) {
-        this.antTxFreqT = antTxFreqT;
-    }
-
-    public AntMfTxFreqParam getAntMfTxFreqT() {
-        return antMfTxFreqT;
-    }
-
-    public void setAntMfTxFreqT(AntMfTxFreqParam antMfTxFreqT) {
-        this.antMfTxFreqT = antMfTxFreqT;
-    }
-
-    public AntRxFreqParam getAntRxFreqT() {
-        return antRxFreqT;
-    }
-
-    public void setAntRxFreqT(AntRxFreqParam antRxFreqT) {
-        this.antRxFreqT = antRxFreqT;
-    }
-
-    public AntMfRxFreqParam getAntMfRxFreqT() {
-        return antMfRxFreqT;
-    }
-
-    public void setAntMfRxFreqT(AntMfRxFreqParam antMfRxFreqT) {
-        this.antMfRxFreqT = antMfRxFreqT;
-    }
-
-    public AntBucDecayParam getAntBucDecayT() {
-        return antBucDecayT;
-    }
-
-    public void setAntBucDecayT(AntBucDecayParam antBucDecayT) {
-        this.antBucDecayT = antBucDecayT;
-    }
-
-    public AntBdcDecayParam getAntBdcDecayT() {
-        return antBdcDecayT;
-    }
-
-    public void setAntBdcDecayT(AntBdcDecayParam antBdcDecayT) {
-        this.antBdcDecayT = antBdcDecayT;
-    }
-
-    public AntTxPolParam getAntTxPolT() {
-        return antTxPolT;
-    }
-
-    public void setAntTxPolT(AntTxPolParam antTxPolT) {
-        this.antTxPolT = antTxPolT;
-    }
-
-    public AntRxPolParam getAntRxPolT() {
-        return antRxPolT;
-    }
-
-    public void setAntRxPolT(AntRxPolParam antRxPolT) {
-        this.antRxPolT = antRxPolT;
-    }
-
-    public AntSwStateParam getAntSwStateT() {
-        return antSwStateT;
-    }
-
-    public void setAntSwStateT(AntSwStateParam antSwStateT) {
-        this.antSwStateT = antSwStateT;
     }
 }

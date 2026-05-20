@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,8 +14,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-06
  */
-public class TAlarmLog extends BaseEntity
-{
+@Data
+public class TAlarmLog extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 告警ID */
@@ -61,116 +62,6 @@ public class TAlarmLog extends BaseEntity
     /** 处理结果 */
     @Excel(name = "处理结果")
     private String handleResult;
-
-    public void setAlarmId(Long alarmId) 
-    {
-        this.alarmId = alarmId;
-    }
-
-    public Long getAlarmId() 
-    {
-        return alarmId;
-    }
-
-    public void setAlarmType(String alarmType) 
-    {
-        this.alarmType = alarmType;
-    }
-
-    public String getAlarmType() 
-    {
-        return alarmType;
-    }
-
-    public void setAlarmLevel(String alarmLevel) 
-    {
-        this.alarmLevel = alarmLevel;
-    }
-
-    public String getAlarmLevel() 
-    {
-        return alarmLevel;
-    }
-
-    public void setAlarmDesc(String alarmDesc) 
-    {
-        this.alarmDesc = alarmDesc;
-    }
-
-    public String getAlarmDesc() 
-    {
-        return alarmDesc;
-    }
-
-    public void setAlarmLocation(String alarmLocation) 
-    {
-        this.alarmLocation = alarmLocation;
-    }
-
-    public String getAlarmLocation() 
-    {
-        return alarmLocation;
-    }
-
-    public void setRelatedId(String relatedId) 
-    {
-        this.relatedId = relatedId;
-    }
-
-    public String getRelatedId() 
-    {
-        return relatedId;
-    }
-
-    public void setOccurTime(Date occurTime) 
-    {
-        this.occurTime = occurTime;
-    }
-
-    public Date getOccurTime() 
-    {
-        return occurTime;
-    }
-
-    public void setHandleStatus(String handleStatus) 
-    {
-        this.handleStatus = handleStatus;
-    }
-
-    public String getHandleStatus() 
-    {
-        return handleStatus;
-    }
-
-    public void setHandler(String handler) 
-    {
-        this.handler = handler;
-    }
-
-    public String getHandler() 
-    {
-        return handler;
-    }
-
-    public void setHandleTime(Date handleTime) 
-    {
-        this.handleTime = handleTime;
-    }
-
-    public Date getHandleTime() 
-    {
-        return handleTime;
-    }
-
-    public void setHandleResult(String handleResult) 
-    {
-        this.handleResult = handleResult;
-    }
-
-    public String getHandleResult() 
-    {
-        return handleResult;
-    }
 
     @Override
     public String toString() {

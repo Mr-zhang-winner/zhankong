@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
@@ -11,8 +12,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-06
  */
-public class TSystemParam extends BaseEntity
-{
+@Data
+public class TSystemParam extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 参数ID */
@@ -41,76 +42,6 @@ public class TSystemParam extends BaseEntity
     /** 状态：0启用 1禁用 */
     @Excel(name = "状态：0启用 1禁用")
     private String status;
-
-    public void setParamId(Long paramId) 
-    {
-        this.paramId = paramId;
-    }
-
-    public Long getParamId() 
-    {
-        return paramId;
-    }
-
-    public void setParamCode(String paramCode) 
-    {
-        this.paramCode = paramCode;
-    }
-
-    public String getParamCode() 
-    {
-        return paramCode;
-    }
-
-    public void setParamName(String paramName) 
-    {
-        this.paramName = paramName;
-    }
-
-    public String getParamName() 
-    {
-        return paramName;
-    }
-
-    public void setParamValue(String paramValue) 
-    {
-        this.paramValue = paramValue;
-    }
-
-    public String getParamValue() 
-    {
-        return paramValue;
-    }
-
-    public void setParamType(String paramType) 
-    {
-        this.paramType = paramType;
-    }
-
-    public String getParamType() 
-    {
-        return paramType;
-    }
-
-    public void setParamDesc(String paramDesc) 
-    {
-        this.paramDesc = paramDesc;
-    }
-
-    public String getParamDesc() 
-    {
-        return paramDesc;
-    }
-
-    public void setStatus(String status) 
-    {
-        this.status = status;
-    }
-
-    public String getStatus() 
-    {
-        return status;
-    }
 
     @Override
     public String toString() {

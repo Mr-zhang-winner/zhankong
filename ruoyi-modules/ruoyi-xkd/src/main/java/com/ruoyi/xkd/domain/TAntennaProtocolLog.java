@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
@@ -11,8 +12,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-11
  */
-public class TAntennaProtocolLog extends BaseEntity
-{
+@Data
+public class TAntennaProtocolLog extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 日志ID */
@@ -65,136 +66,6 @@ public class TAntennaProtocolLog extends BaseEntity
     /** 错误信息 */
     @Excel(name = "错误信息")
     private String errorMsg;
-
-    public void setLogId(Long logId) 
-    {
-        this.logId = logId;
-    }
-
-    public Long getLogId() 
-    {
-        return logId;
-    }
-
-    public void setDeviceCode(String deviceCode) 
-    {
-        this.deviceCode = deviceCode;
-    }
-
-    public String getDeviceCode() 
-    {
-        return deviceCode;
-    }
-
-    public void setDirection(String direction) 
-    {
-        this.direction = direction;
-    }
-
-    public String getDirection() 
-    {
-        return direction;
-    }
-
-    public void setRemoteIp(String remoteIp) 
-    {
-        this.remoteIp = remoteIp;
-    }
-
-    public String getRemoteIp() 
-    {
-        return remoteIp;
-    }
-
-    public void setRemotePort(Long remotePort) 
-    {
-        this.remotePort = remotePort;
-    }
-
-    public Long getRemotePort() 
-    {
-        return remotePort;
-    }
-
-    public void setCmdCode(String cmdCode) 
-    {
-        this.cmdCode = cmdCode;
-    }
-
-    public String getCmdCode() 
-    {
-        return cmdCode;
-    }
-
-    public void setCmdName(String cmdName) 
-    {
-        this.cmdName = cmdName;
-    }
-
-    public String getCmdName() 
-    {
-        return cmdName;
-    }
-
-    public void setFrameHex(String frameHex) 
-    {
-        this.frameHex = frameHex;
-    }
-
-    public String getFrameHex() 
-    {
-        return frameHex;
-    }
-
-    public void setPayloadHex(String payloadHex) 
-    {
-        this.payloadHex = payloadHex;
-    }
-
-    public String getPayloadHex() 
-    {
-        return payloadHex;
-    }
-
-    public void setPayloadJson(String payloadJson) 
-    {
-        this.payloadJson = payloadJson;
-    }
-
-    public String getPayloadJson() 
-    {
-        return payloadJson;
-    }
-
-    public void setCheckStatus(String checkStatus) 
-    {
-        this.checkStatus = checkStatus;
-    }
-
-    public String getCheckStatus() 
-    {
-        return checkStatus;
-    }
-
-    public void setResultStatus(String resultStatus) 
-    {
-        this.resultStatus = resultStatus;
-    }
-
-    public String getResultStatus() 
-    {
-        return resultStatus;
-    }
-
-    public void setErrorMsg(String errorMsg) 
-    {
-        this.errorMsg = errorMsg;
-    }
-
-    public String getErrorMsg() 
-    {
-        return errorMsg;
-    }
 
     @Override
     public String toString() {

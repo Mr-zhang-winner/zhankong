@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -12,8 +13,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-06
  */
-public class TStationConfig extends BaseEntity
-{
+@Data
+public class TStationConfig extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 站址ID */
@@ -42,76 +43,6 @@ public class TStationConfig extends BaseEntity
     /** 状态：0启用 1禁用 */
     @Excel(name = "状态：0启用 1禁用")
     private String status;
-
-    public void setStationId(Long stationId) 
-    {
-        this.stationId = stationId;
-    }
-
-    public Long getStationId() 
-    {
-        return stationId;
-    }
-
-    public void setStationName(String stationName) 
-    {
-        this.stationName = stationName;
-    }
-
-    public String getStationName() 
-    {
-        return stationName;
-    }
-
-    public void setLongitude(BigDecimal longitude) 
-    {
-        this.longitude = longitude;
-    }
-
-    public BigDecimal getLongitude() 
-    {
-        return longitude;
-    }
-
-    public void setLatitude(BigDecimal latitude) 
-    {
-        this.latitude = latitude;
-    }
-
-    public BigDecimal getLatitude() 
-    {
-        return latitude;
-    }
-
-    public void setAddress(String address) 
-    {
-        this.address = address;
-    }
-
-    public String getAddress() 
-    {
-        return address;
-    }
-
-    public void setContact(String contact) 
-    {
-        this.contact = contact;
-    }
-
-    public String getContact() 
-    {
-        return contact;
-    }
-
-    public void setStatus(String status) 
-    {
-        this.status = status;
-    }
-
-    public String getStatus() 
-    {
-        return status;
-    }
 
     @Override
     public String toString() {

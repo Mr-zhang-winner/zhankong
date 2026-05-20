@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
@@ -11,8 +12,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-06
  */
-public class TDeviceConfig extends BaseEntity
-{
+@Data
+public class TDeviceConfig extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 设备ID */
@@ -49,96 +50,6 @@ public class TDeviceConfig extends BaseEntity
     /** 状态：0启用 1禁用 */
     @Excel(name = "状态：0启用 1禁用")
     private String status;
-
-    public void setDeviceId(Long deviceId) 
-    {
-        this.deviceId = deviceId;
-    }
-
-    public Long getDeviceId() 
-    {
-        return deviceId;
-    }
-
-    public void setDeviceCode(String deviceCode) 
-    {
-        this.deviceCode = deviceCode;
-    }
-
-    public String getDeviceCode() 
-    {
-        return deviceCode;
-    }
-
-    public void setDeviceName(String deviceName) 
-    {
-        this.deviceName = deviceName;
-    }
-
-    public String getDeviceName() 
-    {
-        return deviceName;
-    }
-
-    public void setDeviceType(String deviceType) 
-    {
-        this.deviceType = deviceType;
-    }
-
-    public String getDeviceType() 
-    {
-        return deviceType;
-    }
-
-    public void setStationId(Long stationId) 
-    {
-        this.stationId = stationId;
-    }
-
-    public Long getStationId() 
-    {
-        return stationId;
-    }
-
-    public void setIpAddress(String ipAddress) 
-    {
-        this.ipAddress = ipAddress;
-    }
-
-    public String getIpAddress() 
-    {
-        return ipAddress;
-    }
-
-    public void setUdpPort(Long udpPort) 
-    {
-        this.udpPort = udpPort;
-    }
-
-    public Long getUdpPort() 
-    {
-        return udpPort;
-    }
-
-    public void setConfigParams(String configParams) 
-    {
-        this.configParams = configParams;
-    }
-
-    public String getConfigParams() 
-    {
-        return configParams;
-    }
-
-    public void setStatus(String status) 
-    {
-        this.status = status;
-    }
-
-    public String getStatus() 
-    {
-        return status;
-    }
 
     @Override
     public String toString() {

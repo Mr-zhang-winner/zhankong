@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,8 +15,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-06
  */
-public class TDeviceStatus extends BaseEntity
-{
+@Data
+public class TDeviceStatus extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 状态ID */
@@ -62,116 +63,6 @@ public class TDeviceStatus extends BaseEntity
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "上报时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date reportTime;
-
-    public void setStatusId(Long statusId) 
-    {
-        this.statusId = statusId;
-    }
-
-    public Long getStatusId() 
-    {
-        return statusId;
-    }
-
-    public void setDeviceId(Long deviceId) 
-    {
-        this.deviceId = deviceId;
-    }
-
-    public Long getDeviceId() 
-    {
-        return deviceId;
-    }
-
-    public void setDeviceCode(String deviceCode) 
-    {
-        this.deviceCode = deviceCode;
-    }
-
-    public String getDeviceCode() 
-    {
-        return deviceCode;
-    }
-
-    public void setDeviceName(String deviceName) 
-    {
-        this.deviceName = deviceName;
-    }
-
-    public String getDeviceName() 
-    {
-        return deviceName;
-    }
-
-    public void setAzimuth(BigDecimal azimuth) 
-    {
-        this.azimuth = azimuth;
-    }
-
-    public BigDecimal getAzimuth() 
-    {
-        return azimuth;
-    }
-
-    public void setElevation(BigDecimal elevation) 
-    {
-        this.elevation = elevation;
-    }
-
-    public BigDecimal getElevation() 
-    {
-        return elevation;
-    }
-
-    public void setVoltage(BigDecimal voltage) 
-    {
-        this.voltage = voltage;
-    }
-
-    public BigDecimal getVoltage() 
-    {
-        return voltage;
-    }
-
-    public void setWorkParams(String workParams) 
-    {
-        this.workParams = workParams;
-    }
-
-    public String getWorkParams() 
-    {
-        return workParams;
-    }
-
-    public void setRunStatus(String runStatus) 
-    {
-        this.runStatus = runStatus;
-    }
-
-    public String getRunStatus() 
-    {
-        return runStatus;
-    }
-
-    public void setCollectTime(Date collectTime) 
-    {
-        this.collectTime = collectTime;
-    }
-
-    public Date getCollectTime() 
-    {
-        return collectTime;
-    }
-
-    public void setReportTime(Date reportTime) 
-    {
-        this.reportTime = reportTime;
-    }
-
-    public Date getReportTime() 
-    {
-        return reportTime;
-    }
 
     @Override
     public String toString() {

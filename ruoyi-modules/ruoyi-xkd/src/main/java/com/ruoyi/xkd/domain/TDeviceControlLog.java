@@ -1,5 +1,6 @@
 package com.ruoyi.xkd.domain;
 
+import lombok.Data;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,8 +14,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2026-05-11
  */
-public class TDeviceControlLog extends BaseEntity
-{
+@Data
+public class TDeviceControlLog extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 控制ID */
@@ -81,166 +82,6 @@ public class TDeviceControlLog extends BaseEntity
     /** 错误信息 */
     @Excel(name = "错误信息")
     private String errorMsg;
-
-    public void setControlId(Long controlId) 
-    {
-        this.controlId = controlId;
-    }
-
-    public Long getControlId() 
-    {
-        return controlId;
-    }
-
-    public void setDeviceId(Long deviceId) 
-    {
-        this.deviceId = deviceId;
-    }
-
-    public Long getDeviceId() 
-    {
-        return deviceId;
-    }
-
-    public void setDeviceCode(String deviceCode) 
-    {
-        this.deviceCode = deviceCode;
-    }
-
-    public String getDeviceCode() 
-    {
-        return deviceCode;
-    }
-
-    public void setCommandType(String commandType) 
-    {
-        this.commandType = commandType;
-    }
-
-    public String getCommandType() 
-    {
-        return commandType;
-    }
-
-    public void setCommandKey(String commandKey) 
-    {
-        this.commandKey = commandKey;
-    }
-
-    public String getCommandKey() 
-    {
-        return commandKey;
-    }
-
-    public void setCommandContent(String commandContent) 
-    {
-        this.commandContent = commandContent;
-    }
-
-    public String getCommandContent() 
-    {
-        return commandContent;
-    }
-
-    public void setCmdCode(String cmdCode) 
-    {
-        this.cmdCode = cmdCode;
-    }
-
-    public String getCmdCode() 
-    {
-        return cmdCode;
-    }
-
-    public void setFrameHex(String frameHex) 
-    {
-        this.frameHex = frameHex;
-    }
-
-    public String getFrameHex() 
-    {
-        return frameHex;
-    }
-
-    public void setAckCmd(String ackCmd) 
-    {
-        this.ackCmd = ackCmd;
-    }
-
-    public String getAckCmd() 
-    {
-        return ackCmd;
-    }
-
-    public void setAckStatus(String ackStatus) 
-    {
-        this.ackStatus = ackStatus;
-    }
-
-    public String getAckStatus() 
-    {
-        return ackStatus;
-    }
-
-    public void setAckContent(String ackContent) 
-    {
-        this.ackContent = ackContent;
-    }
-
-    public String getAckContent() 
-    {
-        return ackContent;
-    }
-
-    public void setSendStatus(String sendStatus) 
-    {
-        this.sendStatus = sendStatus;
-    }
-
-    public String getSendStatus() 
-    {
-        return sendStatus;
-    }
-
-    public void setSendTime(Date sendTime) 
-    {
-        this.sendTime = sendTime;
-    }
-
-    public Date getSendTime() 
-    {
-        return sendTime;
-    }
-
-    public void setAckTime(Date ackTime) 
-    {
-        this.ackTime = ackTime;
-    }
-
-    public Date getAckTime() 
-    {
-        return ackTime;
-    }
-
-    public void setOperator(String operator) 
-    {
-        this.operator = operator;
-    }
-
-    public String getOperator() 
-    {
-        return operator;
-    }
-
-    public void setErrorMsg(String errorMsg) 
-    {
-        this.errorMsg = errorMsg;
-    }
-
-    public String getErrorMsg() 
-    {
-        return errorMsg;
-    }
 
     @Override
     public String toString() {

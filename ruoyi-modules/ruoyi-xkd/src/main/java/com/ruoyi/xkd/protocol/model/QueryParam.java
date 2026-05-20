@@ -1,6 +1,7 @@
 package com.ruoyi.xkd.protocol.model;
 
 import com.ruoyi.xkd.protocol.model.param.*;
+import lombok.Data;
 
 /**
  * 查询参数集合
@@ -8,6 +9,7 @@ import com.ruoyi.xkd.protocol.model.param.*;
  * 包含天线查询命令（CMD_QUERY 0x82）的所有参数类型
  * 用于存储从天线设备查询到的完整状态信息
  */
+@Data
 public class QueryParam {
     /** 天线模式参数 */
     private AntModeParam antModeT;
@@ -66,149 +68,5 @@ public class QueryParam {
         this.bucGainRangeT = new AntCapGainParam();
         this.antCapRecvGainT = new AntCapGainParam();
         this.bdcGainRangeT = new AntCapGainParam();
-    }
-
-    public AntModeParam getAntModeT() {
-        return antModeT;
-    }
-
-    public void setAntModeT(AntModeParam antModeT) {
-        this.antModeT = antModeT;
-    }
-
-    public AntTxFreqParam getAntTxFreqT() {
-        return antTxFreqT;
-    }
-
-    public void setAntTxFreqT(AntTxFreqParam antTxFreqT) {
-        this.antTxFreqT = antTxFreqT;
-    }
-
-    public AntRxFreqParam getAntRxFreqT() {
-        return antRxFreqT;
-    }
-
-    public void setAntRxFreqT(AntRxFreqParam antRxFreqT) {
-        this.antRxFreqT = antRxFreqT;
-    }
-
-    public AntTxPolParam getAntTxPolT() {
-        return antTxPolT;
-    }
-
-    public void setAntTxPolT(AntTxPolParam antTxPolT) {
-        this.antTxPolT = antTxPolT;
-    }
-
-    public AntRxPolParam getAntRxPolT() {
-        return antRxPolT;
-    }
-
-    public void setAntRxPolT(AntRxPolParam antRxPolT) {
-        this.antRxPolT = antRxPolT;
-    }
-
-    public AntBucDecayParam getAntBucDecayT() {
-        return antBucDecayT;
-    }
-
-    public void setAntBucDecayT(AntBucDecayParam antBucDecayT) {
-        this.antBucDecayT = antBucDecayT;
-    }
-
-    public AntBdcDecayParam getAntBdcDecayT() {
-        return antBdcDecayT;
-    }
-
-    public void setAntBdcDecayT(AntBdcDecayParam antBdcDecayT) {
-        this.antBdcDecayT = antBdcDecayT;
-    }
-
-    public AntSatIdParam getAntSatIdT() {
-        return antSatIdT;
-    }
-
-    public void setAntSatIdT(AntSatIdParam antSatIdT) {
-        this.antSatIdT = antSatIdT;
-    }
-
-    public AntTempParam getAntTempT() {
-        return antTempT;
-    }
-
-    public void setAntTempT(AntTempParam antTempT) {
-        this.antTempT = antTempT;
-    }
-
-    public AntStatusParam getAntStatusT() {
-        return antStatusT;
-    }
-
-    public void setAntStatusT(AntStatusParam antStatusT) {
-        this.antStatusT = antStatusT;
-    }
-
-    public AntAlarmParam getAntAlarmT() {
-        return antAlarmT;
-    }
-
-    public void setAntAlarmT(AntAlarmParam antAlarmT) {
-        this.antAlarmT = antAlarmT;
-    }
-
-    public AntAttitudeParam getAntAttitudeT() {
-        return antAttitudeT;
-    }
-
-    public void setAntAttitudeT(AntAttitudeParam antAttitudeT) {
-        this.antAttitudeT = antAttitudeT;
-    }
-
-    public AntPsrpParam getAntPsrpT() {
-        return antPsrpT;
-    }
-
-    public void setAntPsrpT(AntPsrpParam antPsrpT) {
-        this.antPsrpT = antPsrpT;
-    }
-
-    public AntCapParam getAntCapT() {
-        return antCapT;
-    }
-
-    public void setAntCapT(AntCapParam antCapT) {
-        this.antCapT = antCapT;
-    }
-
-    public AntCapGainParam getAntCapSendGainT() {
-        return antCapSendGainT;
-    }
-
-    public void setAntCapSendGainT(AntCapGainParam antCapSendGainT) {
-        this.antCapSendGainT = antCapSendGainT;
-    }
-
-    public AntCapGainParam getBucGainRangeT() {
-        return bucGainRangeT;
-    }
-
-    public void setBucGainRangeT(AntCapGainParam bucGainRangeT) {
-        this.bucGainRangeT = bucGainRangeT;
-    }
-
-    public AntCapGainParam getAntCapRecvGainT() {
-        return antCapRecvGainT;
-    }
-
-    public void setAntCapRecvGainT(AntCapGainParam antCapRecvGainT) {
-        this.antCapRecvGainT = antCapRecvGainT;
-    }
-
-    public AntCapGainParam getBdcGainRangeT() {
-        return bdcGainRangeT;
-    }
-
-    public void setBdcGainRangeT(AntCapGainParam bdcGainRangeT) {
-        this.bdcGainRangeT = bdcGainRangeT;
     }
 }
