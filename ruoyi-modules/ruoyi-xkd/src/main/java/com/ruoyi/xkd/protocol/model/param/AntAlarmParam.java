@@ -38,3 +38,5 @@ public class AntAlarmParam {
         this.len = 2;  // 固定长度
     }
 }
+
+/// cehsi测试
