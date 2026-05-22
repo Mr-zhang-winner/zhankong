@@ -1,11 +1,13 @@
 package com.ruoyi.xkd.domain;
 
-import lombok.Data;
 import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 站址配置对象 t_station_config
@@ -14,7 +16,9 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @date 2026-05-06
  */
 @Data
-public class TStationConfig extends BaseEntity {
+@EqualsAndHashCode(callSuper = true)
+public class TStationConfig extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
     /** 站址ID */
@@ -43,22 +47,4 @@ public class TStationConfig extends BaseEntity {
     /** 状态：0启用 1禁用 */
     @Excel(name = "状态：0启用 1禁用")
     private String status;
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("stationId", getStationId())
-            .append("stationName", getStationName())
-            .append("longitude", getLongitude())
-            .append("latitude", getLatitude())
-            .append("address", getAddress())
-            .append("contact", getContact())
-            .append("status", getStatus())
-            .append("createBy", getCreateBy())
-            .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
-            .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
-            .toString();
-    }
 }

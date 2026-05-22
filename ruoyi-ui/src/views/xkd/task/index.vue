@@ -106,6 +106,20 @@
           v-hasPermi="['xkd:task:export']"
         >导出</el-button>
       </el-col>
+      <el-col :span="2">
+        <el-button
+          :type="queryTaskRunning ? 'danger' : 'success'"
+          plain
+          icon="el-icon-refresh"
+          size="mini"
+          @click="toggleQueryTask"
+        >{{ queryTaskRunning ? '⏹ 停止查询' : '▶ 启动查询' }}</el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-tag :type="queryTaskRunning ? 'success' : 'warning'">
+          {{ queryTaskRunning ? '运行中' : '已停止' }}
+        </el-tag>
+      </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -244,7 +258,7 @@
 </template>
 
 <script>
-import { listTask, getTask, delTask, addTask, updateTask } from "@/api/xkd/task"
+import { listTask, getTask, delTask, addTask, updateTask, startQueryTask, stopQueryTask, getQueryTaskStatus } from "@/api/xkd/task"
 
 export default {
   name: "Task",
@@ -268,6 +282,8 @@ export default {
       title: "",
       // 是否显示弹出层
       open: false,
+      // 定时任务运行状态
+      queryTaskRunning: false,
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -312,8 +328,26 @@ export default {
   },
   created() {
     this.getList()
+    this.loadQueryTaskStatus()
   },
   methods: {
+    /** 加载定时任务状态 */
+    async loadQueryTaskStatus() {
+      const res = await getQueryTaskStatus()
+      this.queryTaskRunning = res.data
+    },
+    /** 切换定时任务状态 */
+    async toggleQueryTask() {
+      if (this.queryTaskRunning) {
+        await stopQueryTask()
+        this.queryTaskRunning = false
+        this.$modal.msgSuccess("定时任务已停止")
+      } else {
+        await startQueryTask()
+        this.queryTaskRunning = true
+        this.$modal.msgSuccess("定时任务已启动")
+      }
+    },
     /** 查询任务计划列表 */
     getList() {
       this.loading = true

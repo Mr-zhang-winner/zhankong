@@ -2,6 +2,7 @@ package com.ruoyi.xkd.udp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
@@ -94,9 +95,7 @@ public class AntennaUdpServer
                 }
                 catch (Exception e)
                 {
-                    // 解码失败时写入错误日志
                     writeDecodeFailureProtocolLog(packet, e);
-                    
                     log.error("处理天线 UDP 数据失败", e);
                 }
             }
@@ -104,6 +103,27 @@ public class AntennaUdpServer
         catch (Exception e)
         {
             log.error("天线 UDP 接收服务异常", e);
+        }
+    }
+
+    public void sendToDevice(String targetIp, int targetPort, byte[] data)
+    {
+        if (socket == null || socket.isClosed())
+        {
+            log.error("❌ UDP socket 未初始化或已关闭");
+            return;
+        }
+
+        try
+        {
+            InetAddress address = InetAddress.getByName(targetIp);
+            DatagramPacket packet = new DatagramPacket(data, data.length, address, targetPort);
+            socket.send(packet);
+            log.info("📡 [UDP 发送] 数据已发送至 -> {}:{}，数据长度: {} 字节", targetIp, targetPort, data.length);
+        }
+        catch (Exception e)
+        {
+            log.error("❌ 发送失败: {}", e.getMessage());
         }
     }
 
@@ -122,26 +142,26 @@ public class AntennaUdpServer
     {
         try
         {
-            TAntennaProtocolLog log = new TAntennaProtocolLog();
+            TAntennaProtocolLog logEntry = new TAntennaProtocolLog();
 
-            log.setDeviceCode(null); // 解码失败时无法识别设备
-            log.setDirection("RECEIVE");
-            log.setRemoteIp(packet.getAddress().getHostAddress());
-            log.setRemotePort((long) packet.getPort());
+            logEntry.setDeviceCode(null);
+            logEntry.setDirection("RECEIVE");
+            logEntry.setRemoteIp(packet.getAddress().getHostAddress());
+            logEntry.setRemotePort((long) packet.getPort());
 
             byte[] rawBytes = new byte[packet.getLength()];
             System.arraycopy(packet.getData(), 0, rawBytes, 0, packet.getLength());
 
-            log.setCmdCode("UNKNOWN");
-            log.setCmdName("UNKNOWN");
-            log.setFrameHex(ByteCodec.toHex(rawBytes));
-            log.setPayloadHex("");
-            log.setCheckStatus("FAILED");
-            log.setResultStatus("FAILED");
-            log.setErrorMsg(error.getMessage());
-            log.setCreateTime(DateUtils.getNowDate());
+            logEntry.setCmdCode("UNKNOWN");
+            logEntry.setCmdName("UNKNOWN");
+            logEntry.setFrameHex(ByteCodec.toHex(rawBytes));
+            logEntry.setPayloadHex("");
+            logEntry.setCheckStatus("FAILED");
+            logEntry.setResultStatus("FAILED");
+            logEntry.setErrorMsg(error.getMessage());
+            logEntry.setCreateTime(DateUtils.getNowDate());
 
-            antennaProtocolLogService.insertTAntennaProtocolLog(log);
+            antennaProtocolLogService.insertTAntennaProtocolLog(logEntry);
         }
         catch (Exception e)
         {
@@ -153,29 +173,29 @@ public class AntennaUdpServer
     {
         try
         {
-            TAntennaProtocolLog log = new TAntennaProtocolLog();
+            TAntennaProtocolLog logEntry = new TAntennaProtocolLog();
 
             if (deviceConfig != null)
             {
-                log.setDeviceCode(deviceConfig.getDeviceCode());
+                logEntry.setDeviceCode(deviceConfig.getDeviceCode());
             }
             else
             {
-                log.setDeviceCode(frame.getDeviceCode());
+                logEntry.setDeviceCode(frame.getDeviceCode());
             }
 
-            log.setDirection("RECEIVE");
-            log.setRemoteIp(frame.getRemoteIp());
-            log.setRemotePort(frame.getRemotePort() != null ? frame.getRemotePort().longValue() : null);
-            log.setCmdCode(String.format("0x%02X", frame.getCmd()));
-            log.setCmdName(cmdName(frame.getCmd()));
-            log.setFrameHex(ByteCodec.toHex(frame.getRawFrame()));
-            log.setPayloadHex(ByteCodec.toHex(frame.getPayload()));
-            log.setCheckStatus("OK");
-            log.setResultStatus("SUCCESS");
-            log.setCreateTime(DateUtils.getNowDate());
+            logEntry.setDirection("RECEIVE");
+            logEntry.setRemoteIp(frame.getRemoteIp());
+            logEntry.setRemotePort(frame.getRemotePort() != null ? frame.getRemotePort().longValue() : null);
+            logEntry.setCmdCode(String.format("0x%02X", frame.getCmd()));
+            logEntry.setCmdName(cmdName(frame.getCmd()));
+            logEntry.setFrameHex(ByteCodec.toHex(frame.getRawFrame()));
+            logEntry.setPayloadHex(ByteCodec.toHex(frame.getPayload()));
+            logEntry.setCheckStatus("OK");
+            logEntry.setResultStatus("SUCCESS");
+            logEntry.setCreateTime(DateUtils.getNowDate());
 
-            antennaProtocolLogService.insertTAntennaProtocolLog(log);
+            antennaProtocolLogService.insertTAntennaProtocolLog(logEntry);
         }
         catch (Exception e)
         {

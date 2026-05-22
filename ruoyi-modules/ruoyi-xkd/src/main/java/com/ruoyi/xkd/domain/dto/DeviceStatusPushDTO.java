@@ -1,12 +1,17 @@
 package com.ruoyi.xkd.domain.dto;
 
 import com.ruoyi.xkd.domain.TDeviceStatus;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DeviceStatusPushDTO {
 
     private Long statusId;
@@ -30,9 +35,6 @@ public class DeviceStatusPushDTO {
     private Date collectTime;
 
     private Date reportTime;
-
-    public DeviceStatusPushDTO() {
-    }
 
     public DeviceStatusPushDTO(TDeviceStatus deviceStatus) {
         this.statusId = deviceStatus.getStatusId();

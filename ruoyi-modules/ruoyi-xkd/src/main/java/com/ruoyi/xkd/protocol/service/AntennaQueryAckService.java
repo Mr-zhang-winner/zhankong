@@ -6,20 +6,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.alibaba.fastjson2.JSON;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import com.ruoyi.common.core.utils.DateUtils;
 import com.ruoyi.xkd.domain.TAlarmLog;
 import com.ruoyi.xkd.domain.TDeviceStatus;
 import com.ruoyi.xkd.domain.dto.DeviceStatusPushDTO;
+import com.ruoyi.xkd.domain.dto.ProtocolParseResult;
 import com.ruoyi.xkd.domain.dto.WebSocketMessage;
 import com.ruoyi.xkd.mapper.TAlarmLogMapper;
 import com.ruoyi.xkd.mapper.TDeviceStatusMapper;
 import com.ruoyi.xkd.protocol.codec.AntennaParamCodec;
+import com.ruoyi.xkd.protocol.constants.AntennaProtocolConstants;
 import com.ruoyi.xkd.protocol.model.AntennaFrame;
 import com.ruoyi.xkd.protocol.model.QueryParam;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Service;
+
 /**
  * CMD_QUERY_ACK 0x83 查询响应处理
  */
@@ -138,8 +140,24 @@ public class AntennaQueryAckService
 
         tDeviceStatusMapper.insertTDeviceStatus(status);
 
+        // WebSocket 推送设备状态更新
         WebSocketMessage message = new WebSocketMessage("DEVICE_STATUS_UPDATE", new DeviceStatusPushDTO(status));
         messagingTemplate.convertAndSend("/topic/antenna/status", message);
+
+        // WebSocket 推送协议解析结果
+        ProtocolParseResult parseResult = new ProtocolParseResult();
+        parseResult.setCmdCode(String.format("0x%02X", AntennaProtocolConstants.CMD_QUERY_ACK));
+        parseResult.setCmdName("CMD_QUERY_ACK");
+        parseResult.setDeviceCode(frame.getDeviceCode());
+        parseResult.setDirection("RECEIVE");
+        parseResult.setRemoteIp(frame.getRemoteIp());
+        parseResult.setRemotePort(frame.getRemotePort());
+        parseResult.setParams(workParams);
+        parseResult.setParseTime(new Date());
+        parseResult.setCheckStatus("OK");
+        parseResult.setFrameHex("");
+        parseResult.setPayloadHex("");
+        messagingTemplate.convertAndSend("/topic/antenna/parse", parseResult);
 
         if ("ABNORMAL".equals(runStatus)) {
             insertDeviceAlarm(frame.getDeviceCode(), "天线状态异常，antStatus=" + antStatus);

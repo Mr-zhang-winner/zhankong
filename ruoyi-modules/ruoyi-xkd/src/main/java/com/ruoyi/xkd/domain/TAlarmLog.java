@@ -1,12 +1,14 @@
 package com.ruoyi.xkd.domain;
 
-import lombok.Data;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 告警日志对象 t_alarm_log
@@ -15,7 +17,9 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @date 2026-05-06
  */
 @Data
-public class TAlarmLog extends BaseEntity {
+@EqualsAndHashCode(callSuper = true)
+public class TAlarmLog extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
     /** 告警ID */
@@ -62,22 +66,4 @@ public class TAlarmLog extends BaseEntity {
     /** 处理结果 */
     @Excel(name = "处理结果")
     private String handleResult;
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("alarmId", getAlarmId())
-            .append("alarmType", getAlarmType())
-            .append("alarmLevel", getAlarmLevel())
-            .append("alarmDesc", getAlarmDesc())
-            .append("alarmLocation", getAlarmLocation())
-            .append("relatedId", getRelatedId())
-            .append("occurTime", getOccurTime())
-            .append("handleStatus", getHandleStatus())
-            .append("handler", getHandler())
-            .append("handleTime", getHandleTime())
-            .append("handleResult", getHandleResult())
-            .append("createTime", getCreateTime())
-            .toString();
-    }
 }

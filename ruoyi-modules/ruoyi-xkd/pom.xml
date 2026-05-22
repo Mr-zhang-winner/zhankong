@@ -43,6 +43,13 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- SpringBoot Actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,12 +98,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
-        </dependency>
-        <!--     lombok注解      -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>

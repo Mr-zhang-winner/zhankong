@@ -42,3 +42,27 @@ export function delTask(taskId) {
     method: 'delete'
   })
 }
+
+// 启动定时任务
+export function startQueryTask() {
+  return request({
+    url: '/xkd/task/start',
+    method: 'get'
+  })
+}
+
+// 停止定时任务
+export function stopQueryTask() {
+  return request({
+    url: '/xkd/task/stop',
+    method: 'get'
+  })
+}
+
+// 查询定时任务状态
+export function getQueryTaskStatus() {
+  return request({
+    url: '/xkd/task/status',
+    method: 'get'
+  })
+}

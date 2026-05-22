@@ -641,41 +641,46 @@ public class AntennaParamCodec
     public FactoryParam decodeFactoryParam(byte[] payload) {
         FactoryParam factory = new FactoryParam();
         
-        if (payload == null || payload.length < 90) {
+        if (payload == null || payload.length < 2) {
             return factory;
         }
 
-        int offset = 0;
-        
-        byte[] name = new byte[16];
-        System.arraycopy(payload, offset, name, 0, 16);
-        factory.setStrDeviceName(new String(name, StandardCharsets.US_ASCII).trim());
-        offset += 16;
+        int index = 0;
+        while (index + 2 <= payload.length) {
+            int key = payload[index] & 0xFF;
+            int len = payload[index + 1] & 0xFF;
 
-        byte[] oem = new byte[24];
-        System.arraycopy(payload, offset, oem, 0, 24);
-        factory.setStrDeviceOem(new String(oem, StandardCharsets.US_ASCII).trim());
-        offset += 24;
+            if (index + 2 + len > payload.length) {
+                break;
+            }
 
-        byte[] sn = new byte[16];
-        System.arraycopy(payload, offset, sn, 0, 16);
-        factory.setStrDeviceSn(new String(sn, StandardCharsets.US_ASCII).trim());
-        offset += 16;
+            byte[] value = new byte[len];
+            System.arraycopy(payload, index + 2, value, 0, len);
 
-        byte[] date = new byte[16];
-        System.arraycopy(payload, offset, date, 0, 16);
-        factory.setStrDeviceDate(new String(date, StandardCharsets.US_ASCII).trim());
-        offset += 16;
+            switch (key) {
+                case 0x6E: // 设备名称
+                    factory.setStrDeviceName(new String(value, StandardCharsets.US_ASCII).trim());
+                    break;
+                case 0x6F: // 厂商信息
+                    factory.setStrDeviceOem(new String(value, StandardCharsets.US_ASCII).trim());
+                    break;
+                case 0x70: // 序列号
+                    factory.setStrDeviceSn(new String(value, StandardCharsets.US_ASCII).trim());
+                    break;
+                case 0x71: // 生产日期
+                    factory.setStrDeviceDate(new String(value, StandardCharsets.US_ASCII).trim());
+                    break;
+                case 0x72: // 软件版本
+                    factory.setStrSoftVersion(new String(value, StandardCharsets.US_ASCII).trim());
+                    break;
+                default:
+                    break;
+            }
 
-        byte[] version = new byte[16];
-        System.arraycopy(payload, offset, version, 0, 16);
-        factory.setStrSoftVersion(new String(version, StandardCharsets.US_ASCII).trim());
-        offset += 16;
-
-        if (offset < payload.length) {
-            factory.setDeviceInfoValid(payload[offset] & 0xFF);
+            index += 2 + len;
         }
 
+        factory.setDeviceInfoValid(1);
         return factory;
     }
 

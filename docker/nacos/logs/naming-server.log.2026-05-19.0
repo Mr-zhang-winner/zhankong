@@ -1,0 +1,128 @@
+2026-05-19 10:50:04,948 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=1}, 1779064978672_172.19.0.1_49920
+
+2026-05-19 10:50:05,254 INFO Client connection 1779064978672_172.19.0.1_49920 disconnect, remove instances and subscribers
+
+2026-05-19 10:50:45,116 INFO Client connection 1779159044999_172.19.0.1_53854 connect
+
+2026-05-19 10:50:45,253 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=2}, 1779159044999_172.19.0.1_53854
+
+2026-05-19 19:22:21,537 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=3}, 1779159044999_172.19.0.1_53854
+
+2026-05-19 19:22:22,089 INFO Client connection 1779159044999_172.19.0.1_53854 disconnect, remove instances and subscribers
+
+2026-05-19 19:23:27,900 INFO Client connection 1779189807838_172.19.0.1_59760 connect
+
+2026-05-19 19:23:28,008 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=4}, 1779189807838_172.19.0.1_59760
+
+2026-05-19 20:45:20,439 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=5}, 1779189807838_172.19.0.1_59760
+
+2026-05-19 20:45:20,443 INFO Client connection 1779189807838_172.19.0.1_59760 disconnect, remove instances and subscribers
+
+2026-05-19 20:45:35,667 INFO Client connection 1779194735585_172.19.0.1_34998 connect
+
+2026-05-19 20:45:35,777 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=6}, 1779194735585_172.19.0.1_34998
+
+2026-05-19 21:03:38,922 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=7}, 1779194735585_172.19.0.1_34998
+
+2026-05-19 21:03:38,926 INFO Client connection 1779194735585_172.19.0.1_34998 disconnect, remove instances and subscribers
+
+2026-05-19 21:03:56,389 INFO Client connection 1779195836325_172.19.0.1_46790 connect
+
+2026-05-19 21:03:56,505 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=8}, 1779195836325_172.19.0.1_46790
+
+2026-05-19 21:17:47,699 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=9}, 1779195836325_172.19.0.1_46790
+
+2026-05-19 21:17:47,702 INFO Client connection 1779195836325_172.19.0.1_46790 disconnect, remove instances and subscribers
+
+2026-05-19 21:18:08,053 INFO Client connection 1779196687954_172.19.0.1_54000 connect
+
+2026-05-19 21:18:08,164 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=10}, 1779196687954_172.19.0.1_54000
+
+2026-05-19 21:48:13,870 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=1}, 1779064915074_172.19.0.1_51720
+
+2026-05-19 21:48:17,080 INFO Client connection 1779064915074_172.19.0.1_51720 disconnect, remove instances and subscribers
+
+2026-05-19 21:48:29,479 INFO Client connection 1779198509112_172.19.0.1_53864 connect
+
+2026-05-19 21:48:38,901 INFO Client connection 1779198509112_172.19.0.1_53864 disconnect, remove instances and subscribers
+
+2026-05-19 21:48:52,961 INFO Client connection 1779198532881_172.19.0.1_38356 connect
+
+2026-05-19 21:48:53,071 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=2}, 1779198532881_172.19.0.1_38356
+
+2026-05-19 21:49:10,196 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=3}, 1779083862798_172.19.0.1_59804
+
+2026-05-19 21:49:10,201 INFO Client connection 1779083862798_172.19.0.1_59804 disconnect, remove instances and subscribers
+
+2026-05-19 21:49:20,597 INFO Client connection 1779083859093_172.19.0.1_59802 disconnect, remove instances and subscribers
+
+2026-05-19 21:49:26,091 INFO Client connection 1779198566050_172.19.0.1_33282 connect
+
+2026-05-19 21:49:26,162 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=4}, 1779198566050_172.19.0.1_33282
+
+2026-05-19 21:49:29,565 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=1}, 1779064930492_172.19.0.1_49766
+
+2026-05-19 21:49:29,817 INFO Client connection 1779064930492_172.19.0.1_49766 disconnect, remove instances and subscribers
+
+2026-05-19 21:49:58,974 INFO Client connection 1779198598914_172.19.0.1_42170 connect
+
+2026-05-19 21:49:59,082 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-system', ephemeral=true, revision=2}, 1779198598914_172.19.0.1_42170
+
+2026-05-19 21:50:08,533 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=11}, 1779196687954_172.19.0.1_54000
+
+2026-05-19 21:50:08,537 INFO Client connection 1779196687954_172.19.0.1_54000 disconnect, remove instances and subscribers
+
+2026-05-19 21:50:25,125 INFO Client connection 1779198625061_172.19.0.1_43696 connect
+
+2026-05-19 21:50:25,234 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-xkd', ephemeral=true, revision=12}, 1779198625061_172.19.0.1_43696
+
+2026-05-19 21:51:05,873 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=5}, 1779198566050_172.19.0.1_33282
+
+2026-05-19 21:51:05,879 INFO Client connection 1779198566050_172.19.0.1_33282 disconnect, remove instances and subscribers
+
+2026-05-19 21:51:16,232 INFO Client connection 1779198562946_172.19.0.1_33270 disconnect, remove instances and subscribers
+
+2026-05-19 21:51:21,126 INFO Client connection 1779198681122_172.19.0.1_43300 connect
+
+2026-05-19 21:51:21,233 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-auth', ephemeral=true, revision=6}, 1779198681122_172.19.0.1_43300
+
+2026-05-19 21:53:01,305 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=3}, 1779198532881_172.19.0.1_38356
+
+2026-05-19 21:53:01,309 INFO Client connection 1779198532881_172.19.0.1_38356 disconnect, remove instances and subscribers
+
+2026-05-19 21:53:18,387 INFO Client connection 1779198798325_172.19.0.1_33132 connect
+
+2026-05-19 21:53:18,496 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=4}, 1779198798325_172.19.0.1_33132
+
+2026-05-19 21:54:35,842 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=5}, 1779198798325_172.19.0.1_33132
+
+2026-05-19 21:54:35,846 INFO Client connection 1779198798325_172.19.0.1_33132 disconnect, remove instances and subscribers
+
+2026-05-19 21:54:54,032 INFO Client connection 1779198893966_172.19.0.1_47796 connect
+
+2026-05-19 21:54:54,142 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=6}, 1779198893966_172.19.0.1_47796
+
+2026-05-19 21:56:04,246 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=7}, 1779198893966_172.19.0.1_47796
+
+2026-05-19 21:56:04,250 INFO Client connection 1779198893966_172.19.0.1_47796 disconnect, remove instances and subscribers
+
+2026-05-19 21:56:28,040 INFO Client connection 1779198987977_172.19.0.1_39072 connect
+
+2026-05-19 21:56:28,151 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=8}, 1779198987977_172.19.0.1_39072
+
+2026-05-19 21:59:40,963 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=9}, 1779198987977_172.19.0.1_39072
+
+2026-05-19 21:59:40,967 INFO Client connection 1779198987977_172.19.0.1_39072 disconnect, remove instances and subscribers
+
+2026-05-19 21:59:53,928 INFO Client connection 1779199193855_172.19.0.1_37324 connect
+
+2026-05-19 21:59:54,040 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=10}, 1779199193855_172.19.0.1_37324
+
+2026-05-19 22:02:24,384 INFO Client remove for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=11}, 1779199193855_172.19.0.1_37324
+
+2026-05-19 22:02:24,388 INFO Client connection 1779199193855_172.19.0.1_37324 disconnect, remove instances and subscribers
+
+2026-05-19 22:02:35,315 INFO Client connection 1779199355232_172.19.0.1_39404 connect
+
+2026-05-19 22:02:35,428 INFO Client change for service Service{namespace='public', group='DEFAULT_GROUP', name='ruoyi-gateway', ephemeral=true, revision=12}, 1779199355232_172.19.0.1_39404
+

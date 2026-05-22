@@ -1,10 +1,12 @@
 package com.ruoyi.xkd.domain;
 
-import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 天线协议收发日志对象 t_antenna_protocol_log
@@ -13,7 +15,9 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @date 2026-05-11
  */
 @Data
-public class TAntennaProtocolLog extends BaseEntity {
+@EqualsAndHashCode(callSuper = true)
+public class TAntennaProtocolLog extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
     /** 日志ID */
@@ -66,24 +70,4 @@ public class TAntennaProtocolLog extends BaseEntity {
     /** 错误信息 */
     @Excel(name = "错误信息")
     private String errorMsg;
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("logId", getLogId())
-            .append("deviceCode", getDeviceCode())
-            .append("direction", getDirection())
-            .append("remoteIp", getRemoteIp())
-            .append("remotePort", getRemotePort())
-            .append("cmdCode", getCmdCode())
-            .append("cmdName", getCmdName())
-            .append("frameHex", getFrameHex())
-            .append("payloadHex", getPayloadHex())
-            .append("payloadJson", getPayloadJson())
-            .append("checkStatus", getCheckStatus())
-            .append("resultStatus", getResultStatus())
-            .append("errorMsg", getErrorMsg())
-            .append("createTime", getCreateTime())
-            .toString();
-    }
 }

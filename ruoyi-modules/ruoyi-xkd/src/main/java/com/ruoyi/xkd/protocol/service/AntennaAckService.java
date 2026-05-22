@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson2.JSON;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import com.ruoyi.common.core.utils.DateUtils;
 import com.ruoyi.xkd.domain.TDeviceControlLog;
+import com.ruoyi.xkd.domain.dto.ProtocolParseResult;
 import com.ruoyi.xkd.mapper.TDeviceControlLogMapper;
 import com.ruoyi.xkd.protocol.codec.AntennaAckCodec;
 import com.ruoyi.xkd.protocol.constants.AntennaProtocolConstants;
@@ -28,17 +30,23 @@ public class AntennaAckService
     
     /** 设备控制日志数据访问层 */
     private final TDeviceControlLogMapper tDeviceControlLogMapper;
+    
+    /** WebSocket消息推送模板 */
+    private final SimpMessagingTemplate messagingTemplate;
 
     /**
      * 构造函数，注入依赖
      * @param ackCodec ACK数据解码器
      * @param tDeviceControlLogMapper 设备控制日志Mapper
+     * @param messagingTemplate WebSocket消息推送模板
      */
     public AntennaAckService(AntennaAckCodec ackCodec,
-                             TDeviceControlLogMapper tDeviceControlLogMapper)
+                             TDeviceControlLogMapper tDeviceControlLogMapper,
+                             SimpMessagingTemplate messagingTemplate)
     {
         this.ackCodec = ackCodec;
         this.tDeviceControlLogMapper = tDeviceControlLogMapper;
+        this.messagingTemplate = messagingTemplate;
     }
 
     /**
@@ -103,6 +111,24 @@ public class AntennaAckService
             // 更新数据库记录
             tDeviceControlLogMapper.updateTDeviceControlLog(log);
         }
+
+        // WebSocket 推送ACK解析结果
+        ProtocolParseResult parseResult = new ProtocolParseResult();
+        parseResult.setCmdCode(String.format("0x%02X", AntennaProtocolConstants.CMD_SET_ACK));
+        parseResult.setCmdName("CMD_SET_ACK");
+        parseResult.setDeviceCode(frame.getDeviceCode());
+        parseResult.setDirection("RECEIVE");
+        parseResult.setRemoteIp(frame.getRemoteIp());
+        parseResult.setRemotePort(frame.getRemotePort());
+        parseResult.setParseTime(DateUtils.getNowDate());
+        parseResult.setCheckStatus("OK");
+        parseResult.setFrameHex("");
+        parseResult.setPayloadHex("");
+        // 构建ACK参数Map
+        Map<String, Object> ackParams = new HashMap<>();
+        ackParams.put("items", items);
+        parseResult.setParams(ackParams);
+        messagingTemplate.convertAndSend("/topic/antenna/ack", parseResult);
     }
 
     /**

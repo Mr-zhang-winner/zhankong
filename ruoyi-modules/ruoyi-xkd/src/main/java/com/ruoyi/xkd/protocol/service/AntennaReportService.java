@@ -13,6 +13,7 @@ import com.ruoyi.xkd.domain.TAlarmLog;
 import com.ruoyi.xkd.domain.TAntennaProtocolLog;
 import com.ruoyi.xkd.domain.TDeviceStatus;
 import com.ruoyi.xkd.domain.dto.DeviceStatusPushDTO;
+import com.ruoyi.xkd.domain.dto.ProtocolParseResult;
 import com.ruoyi.xkd.domain.dto.WebSocketMessage;
 import com.ruoyi.xkd.mapper.TAlarmLogMapper;
 import com.ruoyi.xkd.mapper.TDeviceStatusMapper;
@@ -136,8 +137,24 @@ public class AntennaReportService
 
         tDeviceStatusMapper.insertTDeviceStatus(status);
 
+        // WebSocket 推送设备状态更新
         WebSocketMessage message = new WebSocketMessage("DEVICE_STATUS_UPDATE", new DeviceStatusPushDTO(status));
         messagingTemplate.convertAndSend("/topic/antenna/status", message);
+
+        // WebSocket 推送协议解析结果
+        ProtocolParseResult parseResult = new ProtocolParseResult();
+        parseResult.setCmdCode(String.format("0x%02X", AntennaProtocolConstants.CMD_REPORT));
+        parseResult.setCmdName("CMD_REPORT");
+        parseResult.setDeviceCode(frame.getDeviceCode());
+        parseResult.setDirection("RECEIVE");
+        parseResult.setRemoteIp(frame.getRemoteIp());
+        parseResult.setRemotePort(frame.getRemotePort());
+        parseResult.setParams(workParams);
+        parseResult.setParseTime(new Date());
+        parseResult.setCheckStatus("OK");
+        parseResult.setFrameHex("");
+        parseResult.setPayloadHex("");
+        messagingTemplate.convertAndSend("/topic/antenna/parse", parseResult);
 
         if (needAlarm)
         {

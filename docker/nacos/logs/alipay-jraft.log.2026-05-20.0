@@ -1,0 +1,126 @@
+2026-05-20 22:38:52,393 INFO SPI service [com.alipay.sofa.jraft.JRaftServiceFactory - com.alipay.sofa.jraft.core.DefaultJRaftServiceFactory] loading.
+
+2026-05-20 22:38:52,776 INFO SPI service [com.alipay.sofa.jraft.rpc.RaftRpcFactory - com.alipay.sofa.jraft.rpc.impl.GrpcRaftRpcFactory] loading.
+
+2026-05-20 22:38:53,463 INFO SPI service [com.alipay.sofa.jraft.util.JRaftSignalHandler - com.alipay.sofa.jraft.NodeDescribeSignalHandler] loading.
+
+2026-05-20 22:38:53,464 INFO SPI service [com.alipay.sofa.jraft.util.JRaftSignalHandler - com.alipay.sofa.jraft.NodeMetricsSignalHandler] loading.
+
+2026-05-20 22:38:53,464 INFO SPI service [com.alipay.sofa.jraft.util.JRaftSignalHandler - com.alipay.sofa.jraft.ThreadPoolMetricsSignalHandler] loading.
+
+2026-05-20 22:38:53,466 INFO SPI service [com.alipay.sofa.jraft.util.timer.RaftTimerFactory - com.alipay.sofa.jraft.util.timer.DefaultRaftTimerFactory] loading.
+
+2026-05-20 22:38:53,470 INFO The number of active nodes increment to 1.
+
+2026-05-20 22:38:57,075 INFO Starts FSMCaller successfully.
+
+2026-05-20 22:38:57,204 INFO Loading snapshot, meta=last_included_index: 2
+last_included_term: 2
+peers: "172.19.0.2:7848"
+.
+
+2026-05-20 22:38:57,342 INFO Node <naming_persistent_service_v2/172.19.0.2:7848> onSnapshotLoadDone, last_included_index: 2
+last_included_term: 2
+peers: "172.19.0.2:7848"
+
+
+2026-05-20 22:38:57,343 INFO Node <naming_persistent_service_v2/172.19.0.2:7848> target priority value has changed from: 0, to: -1.
+
+2026-05-20 22:38:57,634 INFO Node <naming_persistent_service_v2/172.19.0.2:7848> init, term=2, lastLogId=LogId [index=2, term=2], conf=172.19.0.2:7848, oldConf=.
+
+2026-05-20 22:38:57,636 INFO Node <naming_persistent_service_v2/172.19.0.2:7848> start vote and grant vote self, term=2.
+
+2026-05-20 22:38:58,281 INFO Save raft meta, path=/home/nacos/data/protocol/raft/naming_persistent_service_v2/meta-data, term=3, votedFor=172.19.0.2:7848, cost time=645 ms
+
+2026-05-20 22:38:58,282 INFO Node <naming_persistent_service_v2/172.19.0.2:7848> become leader of group, term=3, conf=172.19.0.2:7848, oldConf=.
+
+2026-05-20 22:38:58,285 INFO -Djraft.recyclers.maxCapacityPerThread: 4096.
+
+2026-05-20 22:38:58,287 WARN RPC server is not started in RaftGroupService.
+
+2026-05-20 22:38:58,287 INFO Start the RaftGroupService successfully.
+
+2026-05-20 22:38:58,336 WARN Channel in TRANSIENT_FAILURE state: 172.19.0.2:7848.
+
+2026-05-20 22:38:58,337 WARN Channel in SHUTDOWN state: 172.19.0.2:7848.
+
+2026-05-20 22:38:58,345 INFO The number of active nodes increment to 2.
+
+2026-05-20 22:38:58,535 INFO onLeaderStart: term=3.
+
+2026-05-20 22:39:01,203 INFO Starts FSMCaller successfully.
+
+2026-05-20 22:39:01,383 INFO Loading snapshot, meta=last_included_index: 2
+last_included_term: 2
+peers: "172.19.0.2:7848"
+.
+
+2026-05-20 22:39:01,462 INFO Node <naming_instance_metadata/172.19.0.2:7848> onSnapshotLoadDone, last_included_index: 2
+last_included_term: 2
+peers: "172.19.0.2:7848"
+
+
+2026-05-20 22:39:01,462 INFO Node <naming_instance_metadata/172.19.0.2:7848> target priority value has changed from: 0, to: -1.
+
+2026-05-20 22:39:01,463 INFO Node <naming_instance_metadata/172.19.0.2:7848> init, term=2, lastLogId=LogId [index=2, term=2], conf=172.19.0.2:7848, oldConf=.
+
+2026-05-20 22:39:01,463 INFO Node <naming_instance_metadata/172.19.0.2:7848> start vote and grant vote self, term=2.
+
+2026-05-20 22:39:02,361 INFO Save raft meta, path=/home/nacos/data/protocol/raft/naming_instance_metadata/meta-data, term=3, votedFor=172.19.0.2:7848, cost time=898 ms
+
+2026-05-20 22:39:02,361 INFO Node <naming_instance_metadata/172.19.0.2:7848> become leader of group, term=3, conf=172.19.0.2:7848, oldConf=.
+
+2026-05-20 22:39:02,362 WARN RPC server is not started in RaftGroupService.
+
+2026-05-20 22:39:02,362 INFO Start the RaftGroupService successfully.
+
+2026-05-20 22:39:02,455 INFO The number of active nodes increment to 3.
+
+2026-05-20 22:39:02,614 INFO onLeaderStart: term=3.
+
+2026-05-20 22:39:05,365 INFO Starts FSMCaller successfully.
+
+2026-05-20 22:39:05,479 INFO Loading snapshot, meta=last_included_index: 2
+last_included_term: 2
+peers: "172.19.0.2:7848"
+.
+
+2026-05-20 22:39:05,560 INFO Node <naming_service_metadata/172.19.0.2:7848> onSnapshotLoadDone, last_included_index: 2
+last_included_term: 2
+peers: "172.19.0.2:7848"
+
+
+2026-05-20 22:39:05,560 INFO Node <naming_service_metadata/172.19.0.2:7848> target priority value has changed from: 0, to: -1.
+
+2026-05-20 22:39:05,561 INFO Node <naming_service_metadata/172.19.0.2:7848> init, term=2, lastLogId=LogId [index=2, term=2], conf=172.19.0.2:7848, oldConf=.
+
+2026-05-20 22:39:05,561 INFO Node <naming_service_metadata/172.19.0.2:7848> start vote and grant vote self, term=2.
+
+2026-05-20 22:39:06,203 INFO Save raft meta, path=/home/nacos/data/protocol/raft/naming_service_metadata/meta-data, term=3, votedFor=172.19.0.2:7848, cost time=641 ms
+
+2026-05-20 22:39:06,203 INFO Node <naming_service_metadata/172.19.0.2:7848> become leader of group, term=3, conf=172.19.0.2:7848, oldConf=.
+
+2026-05-20 22:39:06,204 WARN RPC server is not started in RaftGroupService.
+
+2026-05-20 22:39:06,204 INFO Start the RaftGroupService successfully.
+
+2026-05-20 22:39:06,517 INFO onLeaderStart: term=3.
+
+2026-05-20 22:54:45,892 INFO Deleting snapshot /home/nacos/data/protocol/raft/naming_instance_metadata/snapshot/snapshot_3.
+
+2026-05-20 22:54:45,892 INFO Renaming /home/nacos/data/protocol/raft/naming_instance_metadata/snapshot/temp to /home/nacos/data/protocol/raft/naming_instance_metadata/snapshot/snapshot_3.
+
+2026-05-20 22:54:45,892 INFO Deleting snapshot /home/nacos/data/protocol/raft/naming_instance_metadata/snapshot/snapshot_2.
+
+2026-05-20 23:02:18,674 INFO Deleting snapshot /home/nacos/data/protocol/raft/naming_service_metadata/snapshot/snapshot_3.
+
+2026-05-20 23:02:18,675 INFO Renaming /home/nacos/data/protocol/raft/naming_service_metadata/snapshot/temp to /home/nacos/data/protocol/raft/naming_service_metadata/snapshot/snapshot_3.
+
+2026-05-20 23:02:18,675 INFO Deleting snapshot /home/nacos/data/protocol/raft/naming_service_metadata/snapshot/snapshot_2.
+
+2026-05-20 23:08:46,399 INFO Deleting snapshot /home/nacos/data/protocol/raft/naming_persistent_service_v2/snapshot/snapshot_3.
+
+2026-05-20 23:08:46,400 INFO Renaming /home/nacos/data/protocol/raft/naming_persistent_service_v2/snapshot/temp to /home/nacos/data/protocol/raft/naming_persistent_service_v2/snapshot/snapshot_3.
+
+2026-05-20 23:08:46,400 INFO Deleting snapshot /home/nacos/data/protocol/raft/naming_persistent_service_v2/snapshot/snapshot_2.
+

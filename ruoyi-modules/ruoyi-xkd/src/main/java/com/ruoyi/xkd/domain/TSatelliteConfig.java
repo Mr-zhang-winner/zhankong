@@ -1,10 +1,12 @@
 package com.ruoyi.xkd.domain;
 
-import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 卫星配置对象 t_satellite_config
@@ -13,7 +15,9 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @date 2026-05-06
  */
 @Data
-public class TSatelliteConfig extends BaseEntity {
+@EqualsAndHashCode(callSuper = true)
+public class TSatelliteConfig extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
     /** 卫星ID */
@@ -42,22 +46,4 @@ public class TSatelliteConfig extends BaseEntity {
     /** 状态：0启用 1禁用 */
     @Excel(name = "状态：0启用 1禁用")
     private String status;
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("satelliteId", getSatelliteId())
-            .append("satelliteCode", getSatelliteCode())
-            .append("satelliteName", getSatelliteName())
-            .append("ephemerisType", getEphemerisType())
-            .append("orbitParams", getOrbitParams())
-            .append("receiveParams", getReceiveParams())
-            .append("status", getStatus())
-            .append("createBy", getCreateBy())
-            .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
-            .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
-            .toString();
-    }
 }

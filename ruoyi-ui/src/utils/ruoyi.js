@@ -15,13 +15,22 @@ export function parseTime(time, pattern) {
   } else {
     if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
       time = parseInt(time)
-    } else if (typeof time === 'string') {
-      time = time.replace(new RegExp(/-/gm), '/').replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '')
     }
     if ((typeof time === 'number') && (time.toString().length === 10)) {
       time = time * 1000
     }
-    date = new Date(time)
+    if (typeof time === 'number') {
+      date = new Date(time)
+    } else if (typeof time === 'string') {
+      let timeStr = time.replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '')
+      timeStr = timeStr.replace(/[+]\d{2}:\d{2}$/, '').replace('GMT+8', '').trim()
+      const parts = timeStr.split(/[-/\s:]/)
+      if (parts.length >= 6) {
+        date = new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5])
+      } else if (parts.length >= 3) {
+        date = new Date(parts[0], parts[1] - 1, parts[2])
+      }
+    }
   }
   const formatObj = {
     y: date.getFullYear(),

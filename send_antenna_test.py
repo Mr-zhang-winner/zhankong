@@ -208,6 +208,12 @@ def build_factory_ack():
     return encode_frame(CMD_FAC_QUERY_ACK, payload)
 
 
+def build_raw_hex_frame(hex_str):
+    """从十六进制字符串构建原始帧"""
+    hex_str = hex_str.replace(" ", "").replace("\n", "").replace("\t", "")
+    return bytes.fromhex(hex_str)
+
+
 def send_single(frame, description):
     """发送单帧数据"""
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -272,6 +278,7 @@ def main():
         print("  report-abnormal - 发送异常主动上报")
         print("  factory-ack     - 发送出厂信息响应")
         print("  multiple        - 连续发送5帧查询响应")
+        print("  raw             - 发送原始十六进制数据")
         sys.exit(1)
     
     mode = sys.argv[1]
@@ -288,6 +295,10 @@ def main():
         send_single(build_factory_ack(), "发送 CMD_FAC_QUERY_ACK")
     elif mode == "multiple":
         send_multiple()
+    elif mode == "raw":
+        raw_data = "7E 00 4D 87 00 02 05 03 0B 01 F1 6E 0B 58 57 2D 30 2E 39 30 6D 2D 4B 61 6F 11 48 41 4E 47 54 49 41 4E 20 48 45 4E 47 58 49 4E 47 70 0C 43 32 30 32 33 30 31 30 30 33 2D 32 71 08 32 30 32 33 30 33 32 30 72 0B 56 34 2E 30 30 2E 30 30 2E 30 30 C1 7E"
+        frame = build_raw_hex_frame(raw_data)
+        send_single(frame, "发送原始十六进制数据")
     else:
         print(f"未知模式: {mode}")
         sys.exit(1)
